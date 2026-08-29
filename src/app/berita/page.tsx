@@ -1,18 +1,30 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import MotionWrapper from '@/components/MotionWrapper';
 import { INITIAL_NEWS, NewsItem } from '@/lib/data';
 import { Search, Calendar, User, Eye, ArrowRight, Newspaper } from 'lucide-react';
 
 export default function BeritaPage() {
+  const [newsList, setNewsList] = useState<NewsItem[]>(INITIAL_NEWS);
   const [activeCategory, setActiveCategory] = useState<string>('Semua');
   const [searchQuery, setSearchQuery] = useState('');
 
+  useEffect(() => {
+    fetch('/api/news')
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.success && Array.isArray(data.data) && data.data.length > 0) {
+          setNewsList(data.data);
+        }
+      })
+      .catch(() => {});
+  }, []);
+
   const categories = ['Semua', 'Berita', 'Pengumuman', 'Kegiatan'];
 
-  const filteredNews = INITIAL_NEWS.filter((item) => {
+  const filteredNews = newsList.filter((item) => {
     const matchesCat = activeCategory === 'Semua' || item.category === activeCategory;
     const matchesSearch =
       item.title.toLowerCase().includes(searchQuery.toLowerCase()) ||

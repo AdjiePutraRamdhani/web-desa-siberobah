@@ -9,6 +9,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 export default function Navbar() {
   const pathname = usePathname();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [logoError, setLogoError] = useState(false);
 
   const navLinks = [
     { name: 'Beranda', href: '/' },
@@ -21,10 +22,19 @@ export default function Navbar() {
   return (
     <nav className="sticky top-0 w-full z-50 bg-white/80 backdrop-blur-md border-b border-gray-200/80 shadow-sm transition-all duration-300">
       <div className="flex justify-between items-center h-16 px-4 md:px-10 max-w-7xl mx-auto">
-        <Link href="/" className="flex items-center gap-2 group">
-          <div className="w-9 h-9 bg-emerald-700 text-white rounded-lg flex items-center justify-center font-bold text-lg shadow-md group-hover:bg-emerald-800 transition-colors">
-            <ShieldCheck className="w-5 h-5" />
-          </div>
+        <Link href="/" className="flex items-center gap-2.5 group">
+          {!logoError ? (
+            <img
+              src="/logo.png"
+              alt="Logo Desa Siberobah"
+              className="h-10 w-auto object-contain"
+              onError={() => setLogoError(true)}
+            />
+          ) : (
+            <div className="w-9 h-9 bg-emerald-700 text-white rounded-lg flex items-center justify-center font-bold text-lg shadow-md group-hover:bg-emerald-800 transition-colors">
+              <ShieldCheck className="w-5 h-5" />
+            </div>
+          )}
           <span className="font-bold text-xl text-emerald-950 tracking-tight">
             Desa <span className="text-emerald-600">Siberobah</span>
           </span>

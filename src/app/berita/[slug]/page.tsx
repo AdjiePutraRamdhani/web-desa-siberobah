@@ -1,12 +1,16 @@
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import MotionWrapper from '@/components/MotionWrapper';
+import ShareButton from '@/components/ShareButton';
 import { INITIAL_NEWS } from '@/lib/data';
-import { ArrowLeft, Calendar, User, Eye, Share2, Tag, BookOpen } from 'lucide-react';
+import { getNewsBySlugStore, getNewsStore } from '@/lib/newsStore';
+import { ArrowLeft, Calendar, User, Eye, Tag, BookOpen } from 'lucide-react';
 
-export default function DetailBeritaPage({ params }: { params: { slug: string } }) {
-  const article = INITIAL_NEWS.find((item) => item.slug === params.slug) || INITIAL_NEWS[0];
-  const relatedArticles = INITIAL_NEWS.filter((item) => item.id !== article.id).slice(0, 3);
+export default async function DetailBeritaPage({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = await params;
+  const allNews = getNewsStore();
+  const article = getNewsBySlugStore(slug) || INITIAL_NEWS.find((item) => item.slug === slug) || allNews[0];
+  const relatedArticles = allNews.filter((item) => item.id !== article.id).slice(0, 3);
 
   if (!article) {
     notFound();
@@ -87,17 +91,7 @@ export default function DetailBeritaPage({ params }: { params: { slug: string } 
                   <Tag className="w-4 h-4 text-emerald-600" />
                   <span>Kategori: {article.category}, Siberobah Digital, Layanan Desa</span>
                 </div>
-                <button
-                  onClick={() => {
-                    if (navigator.share) {
-                      navigator.share({ title: article.title, url: window.location.href });
-                    }
-                  }}
-                  className="inline-flex items-center gap-2 bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-bold px-4 py-2 rounded-xl transition-colors"
-                >
-                  <Share2 className="w-4 h-4" />
-                  Bagikan Artikel
-                </button>
+                <ShareButton title={article.title} />
               </div>
             </div>
           </MotionWrapper>

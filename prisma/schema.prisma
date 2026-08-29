@@ -59,3 +59,16 @@ model VillageStat {
   icon     String?
   category String @default("General")
 }
+
+model ServiceSubmission {
+  id           String   @id @default(uuid())
+  serviceTitle String
+  name         String
+  nik          String
+  phone        String
+  purpose      String   @db.Text
+  status       String   @default("Pending")
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+}
+

@@ -4,7 +4,7 @@ import { History, Eye, Target, Users, MapPin, Building, ShieldCheck } from 'luci
 export default function ProfilPage() {
   return (
     <div className="flex flex-col min-h-screen bg-slate-50 text-slate-800">
-      
+
       {/* Header Banner */}
       <section className="relative w-full py-20 px-4 md:px-10 bg-slate-900 overflow-hidden">
         <div className="absolute inset-0 z-0 opacity-20">
@@ -32,7 +32,7 @@ export default function ProfilPage() {
       </section>
 
       <main className="max-w-7xl mx-auto px-4 md:px-10 py-16 space-y-20">
-        
+
         {/* History Section */}
         <section className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
           <MotionWrapper direction="right">
@@ -125,7 +125,7 @@ export default function ProfilPage() {
             <div className="bg-white border border-slate-200 rounded-2xl p-6 flex flex-col justify-between h-44 shadow-sm">
               <Users className="w-8 h-8 text-emerald-600" />
               <div>
-                <div className="text-3xl font-extrabold text-slate-900">4.521</div>
+                <div className="text-3xl font-extrabold text-slate-900">500</div>
                 <div className="text-xs text-slate-500 font-medium">Total Penduduk</div>
               </div>
             </div>
@@ -133,7 +133,7 @@ export default function ProfilPage() {
             <div className="bg-white border border-slate-200 rounded-2xl p-6 flex flex-col justify-between h-44 shadow-sm">
               <Building className="w-8 h-8 text-emerald-600" />
               <div>
-                <div className="text-3xl font-extrabold text-slate-900">1.240</div>
+                <div className="text-3xl font-extrabold text-slate-900">150</div>
                 <div className="text-xs text-slate-500 font-medium">Kepala Keluarga (KK)</div>
               </div>
             </div>
@@ -141,7 +141,7 @@ export default function ProfilPage() {
             <div className="bg-white border border-slate-200 rounded-2xl p-6 flex flex-col justify-between h-44 shadow-sm">
               <ShieldCheck className="w-8 h-8 text-amber-600" />
               <div>
-                <div className="text-3xl font-extrabold text-slate-900">4 Dusun</div>
+                <div className="text-3xl font-extrabold text-slate-900">3 Dusun</div>
                 <div className="text-xs text-slate-500 font-medium">Wilayah Administratif</div>
               </div>
             </div>

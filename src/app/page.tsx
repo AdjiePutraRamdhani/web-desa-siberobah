@@ -1,11 +1,15 @@
+'use client';
+
+import { useState } from 'react';
 import Link from 'next/link';
-import { ArrowRight, Leaf, ShieldCheck, Newspaper, Store, Users, MapPin, Award, CheckCircle2 } from 'lucide-react';
+import { ArrowRight, Leaf, ShieldCheck, Newspaper, Store, Users, MapPin, Award, CheckCircle2, Building } from 'lucide-react';
 import MotionWrapper from '@/components/MotionWrapper';
 import { INITIAL_NEWS, INITIAL_SERVICES, INITIAL_WISATA_UMKM } from '@/lib/data';
 
 export default function HomePage() {
   const featuredNews = INITIAL_NEWS.slice(0, 3);
   const featuredWisata = INITIAL_WISATA_UMKM.slice(0, 3);
+  const [heroImgError, setHeroImgError] = useState(false);
 
   return (
     <div className="flex flex-col min-h-screen bg-slate-50 text-slate-800">
@@ -14,9 +18,10 @@ export default function HomePage() {
       <section className="relative w-full min-h-[85vh] flex items-center justify-center pt-16 pb-20 overflow-hidden bg-slate-900">
         <div className="absolute inset-0 z-0 opacity-45">
           <img
-            src="https://lh3.googleusercontent.com/aida-public/AB6AXuBeo2hwoG6K820I3aMhBdcNi53HKUP5d_Pjc6yq-PJM2PZ_mH2UfmSdyEBoSIwnVRFjOU7LBW_QeZ0tjG7ttAhz6ZOIBHbN7tiwtoShTb0F0wd4TYfWCiJgqYHY3641rJ6tdbSrC2oG8A7vWr-bX1qpgeBRKnMOTzE5M34rwFX8HCchhj8-v02_QUimKCMEorgRTqupgwxt-aeRLaKG468vpenpUFARvqMFrinw0ZhigBhS4pP-rnac"
+            src={heroImgError ? "https://lh3.googleusercontent.com/aida-public/AB6AXuBeo2hwoG6K820I3aMhBdcNi53HKUP5d_Pjc6yq-PJM2PZ_mH2UfmSdyEBoSIwnVRFjOU7LBW_QeZ0tjG7ttAhz6ZOIBHbN7tiwtoShTb0F0wd4TYfWCiJgqYHY3641rJ6tdbSrC2oG8A7vWr-bX1qpgeBRKnMOTzE5M34rwFX8HCchhj8-v02_QUimKCMEorgRTqupgwxt-aeRLaKG468vpenpUFARvqMFrinw0ZhigBhS4pP-rnac" : "/hero.jpg"}
             alt="Pemandangan Desa Siberobah"
             className="w-full h-full object-cover"
+            onError={() => setHeroImgError(true)}
           />
           <div className="absolute inset-0 bg-gradient-to-r from-slate-950/90 via-slate-900/70 to-transparent"></div>
         </div>
@@ -74,7 +79,7 @@ export default function HomePage() {
               <Users className="w-6 h-6" />
             </div>
             <div>
-              <div className="text-2xl font-bold text-slate-900">4.521</div>
+              <div className="text-2xl font-bold text-slate-900">500</div>
               <div className="text-xs text-slate-500 font-medium">Total Penduduk</div>
             </div>
           </div>
@@ -91,11 +96,11 @@ export default function HomePage() {
 
           <div className="flex items-center gap-4 p-3">
             <div className="w-12 h-12 rounded-xl bg-amber-50 text-amber-600 flex items-center justify-center shrink-0">
-              <Store className="w-6 h-6" />
+              <Building className="w-6 h-6" />
             </div>
             <div>
-              <div className="text-2xl font-bold text-slate-900">48+</div>
-              <div className="text-xs text-slate-500 font-medium">UMKM Binaan</div>
+              <div className="text-2xl font-bold text-slate-900">150+</div>
+              <div className="text-xs text-slate-500 font-medium">Kepala Keluarga (KK)</div>
             </div>
           </div>
 

@@ -10,7 +10,42 @@ export default function LayananPage() {
   const [searchQuery, setSearchQuery] = useState('');
   const [activeCategory, setActiveCategory] = useState<string>('Semua');
 
+  // Form State
+  const [formData, setFormData] = useState({ name: '', nik: '', phone: '', purpose: '' });
+  const [submitting, setSubmitting] = useState(false);
+  const [successSubmitted, setSuccessSubmitted] = useState<any>(null);
+
   const categories = ['Semua', 'Surat Keterangan', 'Kependudukan', 'Bantuan Sosial'];
+
+  const handleSubmitForm = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!selectedService) return;
+
+    setSubmitting(true);
+    try {
+      const res = await fetch('/api/submissions', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          serviceTitle: selectedService.title,
+          ...formData,
+        }),
+      });
+
+      const data = await res.json();
+      if (data.success) {
+        setSuccessSubmitted(data.data || { ...formData, serviceTitle: selectedService.title });
+        setFormData({ name: '', nik: '', phone: '', purpose: '' });
+        setSelectedService(null);
+      } else {
+        alert(data.message || 'Gagal mengirim pengajuan. Silakan coba lagi.');
+      }
+    } catch (err) {
+      alert('Terjadi kesalahan jaringan saat mengirimkan pengajuan.');
+    } finally {
+      setSubmitting(false);
+    }
+  };
 
   const filteredServices = INITIAL_SERVICES.filter((srv) => {
     const matchesCat = activeCategory === 'Semua' || srv.category === activeCategory;
@@ -174,41 +209,76 @@ export default function LayananPage() {
             <h3 className="text-2xl font-bold text-slate-900 mb-2">Formulir Pengajuan {selectedService.title}</h3>
             <p className="text-slate-500 text-xs mb-6">Isi data di bawah ini untuk mengajukan permohonan ke Balai Desa Siberobah.</p>
 
-            <form onSubmit={(e) => {
-              e.preventDefault();
-              alert(`Pengajuan ${selectedService.title} berhasil terkirim! Tim Desa Siberobah akan menghubungi Anda.`);
-              setSelectedService(null);
-            }} className="space-y-4 text-xs">
+            <form onSubmit={handleSubmitForm} className="space-y-4 text-xs">
               <div>
                 <label className="block font-semibold text-slate-700 mb-1">Nama Lengkap (Sesuai KTP)</label>
-                <input required type="text" placeholder="Budi Santoso" className="w-full p-3 border border-slate-200 rounded-xl focus:ring-2 focus:ring-emerald-600 focus:outline-none" />
+                <input
+                  required
+                  type="text"
+                  placeholder="Budi Santoso"
+                  value={formData.name}
+                  onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                  className="w-full p-3 border border-slate-200 rounded-xl focus:ring-2 focus:ring-emerald-600 focus:outline-none"
+                />
               </div>
               <div>
                 <label className="block font-semibold text-slate-700 mb-1">NIK (16 Digit)</label>
-                <input required type="text" maxLength={16} placeholder="3301xxxxxxxxxxxx" className="w-full p-3 border border-slate-200 rounded-xl focus:ring-2 focus:ring-emerald-600 focus:outline-none" />
+                <input
+                  required
+                  type="text"
+                  maxLength={16}
+                  minLength={16}
+                  placeholder="3301xxxxxxxxxxxx"
+                  value={formData.nik}
+                  onChange={(e) => setFormData({ ...formData, nik: e.target.value.replace(/[^0-9]/g, '') })}
+                  className="w-full p-3 border border-slate-200 rounded-xl focus:ring-2 focus:ring-emerald-600 focus:outline-none"
+                />
               </div>
               <div>
-                <label className="block font-semibold text-slate-700 mb-1">Nomor WhatsApp Active</label>
-                <input required type="tel" placeholder="0812xxxxxxxx" className="w-full p-3 border border-slate-200 rounded-xl focus:ring-2 focus:ring-emerald-600 focus:outline-none" />
+                <label className="block font-semibold text-slate-700 mb-1">Nomor WhatsApp Aktif</label>
+                <input
+                  required
+                  type="tel"
+                  placeholder="0812xxxxxxxx"
+                  value={formData.phone}
+                  onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+                  className="w-full p-3 border border-slate-200 rounded-xl focus:ring-2 focus:ring-emerald-600 focus:outline-none"
+                />
               </div>
               <div>
                 <label className="block font-semibold text-slate-700 mb-1">Keperluan</label>
-                <textarea required rows={3} placeholder="Jelaskan secara singkat alasan pengajuan surat..." className="w-full p-3 border border-slate-200 rounded-xl focus:ring-2 focus:ring-emerald-600 focus:outline-none"></textarea>
+                <textarea
+                  required
+                  rows={3}
+                  placeholder="Jelaskan secara singkat alasan pengajuan surat..."
+                  value={formData.purpose}
+                  onChange={(e) => setFormData({ ...formData, purpose: e.target.value })}
+                  className="w-full p-3 border border-slate-200 rounded-xl focus:ring-2 focus:ring-emerald-600 focus:outline-none"
+                ></textarea>
               </div>
 
               <div className="pt-4 flex gap-3">
                 <button
                   type="button"
                   onClick={() => setSelectedService(null)}
-                  className="flex-1 py-3 bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold rounded-xl transition-colors"
+                  disabled={submitting}
+                  className="flex-1 py-3 bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold rounded-xl transition-colors disabled:opacity-50"
                 >
                   Batal
                 </button>
                 <button
                   type="submit"
-                  className="flex-1 py-3 bg-emerald-700 hover:bg-emerald-800 text-white font-bold rounded-xl shadow-lg transition-colors"
+                  disabled={submitting}
+                  className="flex-1 py-3 bg-emerald-700 hover:bg-emerald-800 text-white font-bold rounded-xl shadow-lg transition-colors disabled:opacity-50 flex items-center justify-center gap-2"
                 >
-                  Kirim Pengajuan
+                  {submitting ? (
+                    <>
+                      <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
+                      <span>Mengirim...</span>
+                    </>
+                  ) : (
+                    <span>Kirim Pengajuan</span>
+                  )}
                 </button>
               </div>
             </form>
@@ -216,6 +286,33 @@ export default function LayananPage() {
         </div>
       )}
 
+      {/* Success Modal */}
+      {successSubmitted && (
+        <div className="fixed inset-0 z-50 bg-slate-900/60 backdrop-blur-sm flex items-center justify-center p-4">
+          <MotionWrapper direction="up" className="bg-white rounded-3xl p-8 max-w-md w-full shadow-2xl text-center space-y-4">
+            <div className="w-16 h-16 bg-emerald-100 text-emerald-700 rounded-full flex items-center justify-center mx-auto">
+              <CheckCircle2 className="w-10 h-10" />
+            </div>
+            <h3 className="text-2xl font-bold text-slate-900">Pengajuan Berhasil Terkirim!</h3>
+            <p className="text-slate-600 text-sm leading-relaxed">
+              Permohonan <strong>{successSubmitted.serviceTitle}</strong> atas nama <strong>{successSubmitted.name}</strong> telah tersimpan di sistem Balai Desa Siberobah.
+            </p>
+            <div className="bg-slate-50 p-4 rounded-xl text-xs text-left text-slate-600 space-y-1">
+              <div><strong>Status:</strong> <span className="text-emerald-700 font-semibold">Menunggu Persetujuan Admin</span></div>
+              <div><strong>No. WA:</strong> {successSubmitted.phone}</div>
+              <div><strong>NIK:</strong> {successSubmitted.nik}</div>
+            </div>
+            <button
+              onClick={() => setSuccessSubmitted(null)}
+              className="w-full py-3 bg-emerald-700 hover:bg-emerald-800 text-white font-bold rounded-xl transition-colors shadow-md"
+            >
+              Tutup & Selesai
+            </button>
+          </MotionWrapper>
+        </div>
+      )}
+
     </div>
   );
 }
+
