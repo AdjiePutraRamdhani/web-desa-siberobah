@@ -1,0 +1,269 @@
+<!DOCTYPE html><html lang="id"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Desa Siberobah - Cerdas &amp; Mandiri</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com" rel="preconnect">
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Plus+Jakarta+Sans:wght@600;700&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "error-container": "#ffdad6",
+                      "on-primary-fixed": "#001945",
+                      "surface-variant": "#e2e2e5",
+                      "primary-fixed": "#d9e2ff",
+                      "on-secondary-container": "#217128",
+                      "inverse-primary": "#b0c6ff",
+                      "surface-container-high": "#e8e8ea",
+                      "outline-variant": "#c3c6d5",
+                      "inverse-surface": "#2f3133",
+                      "on-primary-fixed-variant": "#00419c",
+                      "on-secondary-fixed-variant": "#005312",
+                      "surface-bright": "#f9f9fc",
+                      "surface-tint": "#1d59c1",
+                      "on-primary": "#ffffff",
+                      "error": "#ba1a1a",
+                      "surface-dim": "#dadadc",
+                      "on-surface-variant": "#434653",
+                      "on-error": "#ffffff",
+                      "tertiary-container": "#595853",
+                      "tertiary": "#41413c",
+                      "on-tertiary": "#ffffff",
+                      "on-error-container": "#93000a",
+                      "secondary": "#1b6d24",
+                      "primary-container": "#0f52ba",
+                      "secondary-fixed": "#a3f69c",
+                      "surface-container-low": "#f3f3f6",
+                      "surface-container": "#eeeef0",
+                      "tertiary-fixed": "#e5e2db",
+                      "tertiary-fixed-dim": "#c9c6c0",
+                      "primary-fixed-dim": "#b0c6ff",
+                      "on-background": "#1a1c1e",
+                      "on-tertiary-fixed": "#1c1c18",
+                      "surface-container-highest": "#e2e2e5",
+                      "outline": "#737784",
+                      "on-tertiary-container": "#d1cec8",
+                      "background": "#f9f9fc",
+                      "surface-container-lowest": "#ffffff",
+                      "secondary-container": "#a0f399",
+                      "on-surface": "#1a1c1e",
+                      "on-secondary-fixed": "#002204",
+                      "on-tertiary-fixed-variant": "#474742",
+                      "secondary-fixed-dim": "#88d982",
+                      "primary": "#003c90",
+                      "on-primary-container": "#bcceff",
+                      "on-secondary": "#ffffff",
+                      "surface": "#f9f9fc",
+                      "inverse-on-surface": "#f0f0f3"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "stack-sm": "8px",
+                      "container-max": "1280px",
+                      "margin-mobile": "16px",
+                      "margin-desktop": "40px",
+                      "gutter": "24px",
+                      "stack-md": "16px",
+                      "stack-lg": "32px"
+              },
+              "fontFamily": {
+                      "body-lg": [
+                              "Inter"
+                      ],
+                      "label-md": [
+                              "Inter"
+                      ],
+                      "headline-lg": [
+                              "Plus Jakarta Sans"
+                      ],
+                      "label-sm": [
+                              "Inter"
+                      ],
+                      "headline-md": [
+                              "Plus Jakarta Sans"
+                      ],
+                      "body-md": [
+                              "Inter"
+                      ],
+                      "headline-xl": [
+                              "Plus Jakarta Sans"
+                      ],
+                      "headline-xl-mobile": [
+                              "Plus Jakarta Sans"
+                      ]
+              },
+              "fontSize": {
+                      "body-lg": [
+                              "18px",
+                              {
+                                      "lineHeight": "28px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "label-md": [
+                              "14px",
+                              {
+                                      "lineHeight": "20px",
+                                      "letterSpacing": "0.01em",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "headline-lg": [
+                              "32px",
+                              {
+                                      "lineHeight": "40px",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "label-sm": [
+                              "12px",
+                              {
+                                      "lineHeight": "16px",
+                                      "letterSpacing": "0.03em",
+                                      "fontWeight": "500"
+                              }
+                      ],
+                      "headline-md": [
+                              "24px",
+                              {
+                                      "lineHeight": "32px",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "body-md": [
+                              "16px",
+                              {
+                                      "lineHeight": "24px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "headline-xl": [
+                              "48px",
+                              {
+                                      "lineHeight": "56px",
+                                      "letterSpacing": "-0.02em",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "headline-xl-mobile": [
+                              "32px",
+                              {
+                                      "lineHeight": "40px",
+                                      "letterSpacing": "-0.02em",
+                                      "fontWeight": "700"
+                              }
+                      ]
+              }
+      },
+          },
+        }
+      </script>
+<style>
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+        .ambient-shadow {
+            box-shadow: 0 10px 30px -5px rgba(0, 60, 144, 0.04);
+        }
+        .hover-lift {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .hover-lift:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 40px -10px rgba(0, 60, 144, 0.08);
+        }
+    </style>
+</head>
+<body class="bg-surface text-on-surface font-body-md antialiased selection:bg-primary-fixed selection:text-on-primary-fixed">
+<!-- TopNavBar -->
+<nav class="sticky top-0 w-full z-50 bg-surface/70 backdrop-blur-md border-b border-outline-variant/30 shadow-sm transition-all duration-300 ease-in-out">
+<div class="flex justify-between items-center h-16 px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto">
+<div class="font-headline-md text-headline-md text-primary font-bold">
+                Desa Siberobah
+            </div>
+<div class="hidden md:flex items-center space-x-8"><a class="font-label-md text-label-md text-primary relative after:content-[''] after:absolute after:-bottom-1 after:left-1/2 after:-translate-x-1/2 after:w-1 after:h-1 after:bg-primary after:rounded-full" href="#">Beranda</a>
+<a class="font-label-md text-label-md text-on-surface-variant hover:text-primary transition-colors hover:bg-surface-variant/50 rounded-lg px-3 py-2" href="#">Profil</a>
+<a class="font-label-md text-label-md text-on-surface-variant hover:text-primary transition-colors hover:bg-surface-variant/50 rounded-lg px-3 py-2" href="#">Layanan</a>
+<a class="font-label-md text-label-md text-on-surface-variant hover:text-primary transition-colors hover:bg-surface-variant/50 rounded-lg px-3 py-2" href="#">Berita</a>
+<a class="font-label-md text-label-md text-on-surface-variant hover:text-primary transition-colors hover:bg-surface-variant/50 rounded-lg px-3 py-2" href="#">UMKM</a></div>
+<div class="flex items-center space-x-4">
+<button class="md:hidden text-on-surface">
+<span class="material-symbols-outlined">menu</span>
+</button>
+<button class="hidden md:inline-flex bg-primary text-on-primary font-label-md text-label-md px-6 py-2 rounded-lg hover:bg-on-primary-fixed-variant transition-colors hover-lift">
+                    Login
+                </button>
+</div>
+</div>
+</nav>
+<!-- Hero Section -->
+<section class="relative w-full min-h-[80vh] flex items-center justify-center pt-stack-lg pb-stack-lg overflow-hidden">
+<div class="absolute inset-0 z-0">
+<div class="w-full h-full bg-cover bg-center" data-alt="A breathtaking, wide-angle landscape photograph of a vibrant Indonesian village at sunrise. Lush green rice paddies stretch towards rolling hills in the background, bathed in soft, golden morning light. Modern, subtle technological elements like solar panels on rooftops and a sleek communication tower are integrated organically into the rural setting. The sky is clear blue with soft wispy clouds. The overall mood is optimistic, peaceful, and forward-looking, perfectly capturing a 'Smart Village' aesthetic with high clarity and vivid colors." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBeo2hwoG6K820I3aMhBdcNi53HKUP5d_Pjc6yq-PJM2PZ_mH2UfmSdyEBoSIwnVRFjOU7LBW_QeZ0tjG7ttAhz6ZOIBHbN7tiwtoShTb0F0wd4TYfWCiJgqYHY3641rJ6tdbSrC2oG8A7vWr-bX1qpgeBRKnMOTzE5M34rwFX8HCchhj8-v02_QUimKCMEorgRTqupgwxt-aeRLaKG468vpenpUFARvqMFrinw0ZhigBhS4pP-rnac')"></div>
+<div class="absolute inset-0 bg-gradient-to-r from-surface/90 via-surface/70 to-transparent"></div>
+</div>
+<div class="relative z-10 w-full max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop">
+<div class="max-w-2xl">
+<div class="inline-flex items-center space-x-2 bg-secondary-container/30 text-on-secondary-container px-3 py-1 rounded-full font-label-sm text-label-sm mb-6 border border-secondary/20">
+<span class="material-symbols-outlined text-[16px]">eco</span>
+<span class="">Smart Village Initiative</span>
+</div>
+<h1 class="font-headline-xl-mobile md:font-headline-xl text-headline-xl-mobile md:text-headline-xl text-on-surface mb-6">
+                    Mewujudkan Desa Siberobah <span class="text-primary">Cerdas &amp; Mandiri</span>
+</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant mb-8 max-w-xl">
+                    Harmonisasi antara warisan budaya pedesaan dan inovasi teknologi digital untuk pelayanan masyarakat yang lebih baik, cepat, dan transparan.
+                </p>
+<div class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
+<button class="bg-primary text-on-primary font-label-md text-label-md px-8 py-3 rounded-lg hover:bg-on-primary-fixed-variant transition-colors shadow-lg hover-lift flex items-center justify-center space-x-2">
+<span class="">Lihat Layanan Publik</span>
+<span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+</button>
+<button class="bg-transparent border-[1.5px] border-primary text-primary font-label-md text-label-md px-8 py-3 rounded-lg hover:bg-primary-fixed/20 transition-colors flex items-center justify-center">
+                        Jelajahi Potensi
+                    </button>
+</div>
+</div>
+</div>
+</section>
+<!-- Footer -->
+<footer class="w-full mt-stack-lg bg-tertiary">
+<div class="grid grid-cols-1 md:grid-cols-3 gap-gutter py-stack-lg px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto">
+<div class="flex flex-col space-y-4">
+<div class="font-headline-md text-headline-md text-on-tertiary">
+                    Desa Siberobah
+                </div>
+<p class="font-body-md text-body-md text-tertiary-fixed-dim">
+                    © 2024 Desa Siberobah. Harmonizing Heritage &amp; Progress.
+                </p>
+</div>
+<div class="md:col-span-2 grid grid-cols-2 sm:grid-cols-4 gap-8">
+<div class="flex flex-col space-y-3">
+<span class="font-label-md text-label-md text-on-tertiary">Tautan</span>
+<a class="font-body-md text-body-md text-tertiary-fixed-dim hover:text-white transition-colors opacity-90 hover:opacity-100 hover:underline" href="#">Privacy Policy</a>
+<a class="font-body-md text-body-md text-tertiary-fixed-dim hover:text-white transition-colors opacity-90 hover:opacity-100 hover:underline" href="#">Terms of Service</a>
+</div>
+<div class="flex flex-col space-y-3">
+<span class="font-label-md text-label-md text-on-tertiary">Kontak</span>
+<a class="font-body-md text-body-md text-tertiary-fixed-dim hover:text-white transition-colors opacity-90 hover:opacity-100 hover:underline" href="#">Contact Us</a>
+<a class="font-body-md text-body-md text-tertiary-fixed-dim hover:text-white transition-colors opacity-90 hover:opacity-100 hover:underline" href="#">Sitemap</a>
+</div>
+</div>
+</div>
+</footer>
+
+
+</body></html>

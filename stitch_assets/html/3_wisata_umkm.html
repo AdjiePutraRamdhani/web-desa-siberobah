@@ -1,0 +1,356 @@
+<!DOCTYPE html><html class="scroll-smooth" lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Wisata &amp; UMKM - Desa Siberobah</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Plus+Jakarta+Sans:wght@500;600;700;800&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "surface-dim": "#dadadc",
+                        "outline-variant": "#c3c6d5",
+                        "tertiary": "#41413c",
+                        "tertiary-container": "#595853",
+                        "surface-container-high": "#e8e8ea",
+                        "outline": "#737784",
+                        "on-primary-fixed-variant": "#00419c",
+                        "background": "#f9f9fc",
+                        "on-secondary-container": "#217128",
+                        "on-primary-container": "#bcceff",
+                        "secondary-fixed-dim": "#88d982",
+                        "secondary-container": "#a0f399",
+                        "on-error-container": "#93000a",
+                        "on-surface-variant": "#434653",
+                        "primary-fixed": "#d9e2ff",
+                        "surface-container": "#eeeef0",
+                        "surface-container-highest": "#e2e2e5",
+                        "on-secondary-fixed-variant": "#005312",
+                        "surface-variant": "#e2e2e5",
+                        "on-tertiary-container": "#d1cec8",
+                        "on-secondary": "#ffffff",
+                        "on-primary-fixed": "#001945",
+                        "surface-container-low": "#f3f3f6",
+                        "on-tertiary-fixed": "#1c1c18",
+                        "primary": "#003c90",
+                        "secondary-fixed": "#a3f69c",
+                        "primary-fixed-dim": "#b0c6ff",
+                        "primary-container": "#0f52ba",
+                        "on-tertiary": "#ffffff",
+                        "on-surface": "#1a1c1e",
+                        "surface-bright": "#f9f9fc",
+                        "tertiary-fixed-dim": "#c9c6c0",
+                        "error": "#ba1a1a",
+                        "on-secondary-fixed": "#002204",
+                        "inverse-on-surface": "#f0f0f3",
+                        "inverse-surface": "#2f3133",
+                        "surface": "#f9f9fc",
+                        "on-tertiary-fixed-variant": "#474742",
+                        "on-primary": "#ffffff",
+                        "tertiary-fixed": "#e5e2db",
+                        "error-container": "#ffdad6",
+                        "inverse-primary": "#b0c6ff",
+                        "surface-tint": "#1d59c1",
+                        "secondary": "#1b6d24",
+                        "on-background": "#1a1c1e",
+                        "surface-container-lowest": "#ffffff",
+                        "on-error": "#ffffff"
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    spacing: {
+                        "gutter": "24px",
+                        "stack-lg": "32px",
+                        "stack-md": "16px",
+                        "container-max": "1280px",
+                        "margin-desktop": "40px",
+                        "stack-sm": "8px",
+                        "margin-mobile": "16px"
+                    },
+                    fontFamily: {
+                        "body-lg": ["Inter"],
+                        "headline-xl": ["Plus Jakarta Sans"],
+                        "headline-xl-mobile": ["Plus Jakarta Sans"],
+                        "label-sm": ["Inter"],
+                        "label-md": ["Inter"],
+                        "headline-lg": ["Plus Jakarta Sans"],
+                        "body-md": ["Inter"],
+                        "headline-md": ["Plus Jakarta Sans"]
+                    },
+                    fontSize: {
+                        "body-lg": ["18px", { "lineHeight": "28px", "fontWeight": "400" }],
+                        "headline-xl": ["48px", { "lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "headline-xl-mobile": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "label-sm": ["12px", { "lineHeight": "16px", "letterSpacing": "0.03em", "fontWeight": "500" }],
+                        "label-md": ["14px", { "lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "600" }],
+                        "headline-lg": ["32px", { "lineHeight": "40px", "fontWeight": "600" }],
+                        "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "headline-md": ["24px", { "lineHeight": "32px", "fontWeight": "600" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .material-symbols-outlined[data-weight="fill"] {
+            font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body-lg antialiased">
+<!-- TopNavBar (Shared Component) -->
+<header class="sticky top-0 w-full bg-surface/70 backdrop-blur-md border-b border-outline-variant/30 shadow-sm z-50 transition-all duration-300 ease-in-out">
+<div class="flex justify-between items-center h-16 px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto">
+<a class="font-headline-md text-headline-md text-primary font-bold" href="#">Desa Siberobah</a>
+<nav class="hidden md:flex gap-gutter items-center"><a class="font-label-md text-label-md text-on-surface-variant hover:bg-surface-variant/50 rounded-lg px-3 py-2 transition-colors" href="#">Beranda</a>
+<a class="font-label-md text-label-md text-on-surface-variant hover:bg-surface-variant/50 rounded-lg px-3 py-2 transition-colors" href="#">Profil</a>
+<a class="font-label-md text-label-md text-on-surface-variant hover:bg-surface-variant/50 rounded-lg px-3 py-2 transition-colors" href="#">Layanan</a>
+<a class="font-label-md text-label-md text-on-surface-variant hover:bg-surface-variant/50 rounded-lg px-3 py-2 transition-colors" href="#">Berita</a>
+<a class="font-label-md text-label-md text-primary relative after:content-[''] after:absolute after:-bottom-1 after:left-1/2 after:-translate-x-1/2 after:w-1 after:h-1 after:bg-primary after:rounded-full px-3 py-2 transition-colors" href="#">UMKM</a></nav>
+<div class="flex items-center gap-4">
+<button class="hidden md:flex items-center gap-2 bg-primary text-on-primary font-label-md text-label-md px-4 py-2 rounded-lg hover:bg-primary/90 transition-colors shadow-[0_4px_14px_0_rgba(0,60,144,0.39)] hover:shadow-[0_6px_20px_rgba(0,60,144,0.23)] hover:-translate-y-[1px] duration-200">
+                    Login
+                </button>
+<button class="md:hidden text-primary p-2">
+<span class="material-symbols-outlined" data-icon="menu">menu</span>
+</button>
+</div>
+</div>
+</header>
+<main>
+<!-- Hero Section -->
+<section class="relative w-full h-[60vh] md:h-[70vh] flex items-center justify-center overflow-hidden">
+<div class="absolute inset-0 bg-cover bg-center bg-no-repeat w-full h-full" data-alt="A breathtaking panoramic view of a lush, vibrant green valley in an Indonesian village at sunrise. Mist gently rolling over terraced rice paddies. Soft, golden morning light illuminating the scene, creating a sense of warmth and peaceful rural heritage. A modern smart village concept subtly hinted at by a clean, pristine environment. Shot in 4k resolution, highly detailed, photorealistic." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuB38ASXmJCuEkWLBBgKvVEcxoukFlTGbZHaW0PkpxrX7Rw_6yU2vaYbZW_shsu47U8VHhYxClU5dDrorYvRVpWqqxqBEqiVbyQmEePMXA2_oj2WMH6_Hj2XonxenNM2-KSyOExr6z8rCe6HTNqfsasC3kEdaCzRrBRr2-g5sAFAqYDye8WKoPorQpJgQEOZxoEiCbDzlwWsTUziO-O9RMC2xoqshXk4aXmScvf7PG3zCniCaBMKggRz')"></div>
+<div class="absolute inset-0 bg-gradient-to-b from-black/40 via-black/20 to-surface"></div>
+<div class="relative z-10 text-center px-margin-mobile md:px-margin-desktop max-w-[800px] mt-16">
+<span class="inline-block bg-primary/20 backdrop-blur-md text-white font-label-sm text-label-sm px-3 py-1 rounded-full mb-4 border border-white/30 uppercase tracking-wider">Jelajahi Potensi Desa</span>
+<h1 class="font-headline-xl-mobile md:font-headline-xl text-headline-xl-mobile md:text-headline-xl text-white mb-6 drop-shadow-lg">Pesona Alam &amp; Karya <br class="hidden md:block"> Desa Siberobah</h1>
+<p class="font-body-lg text-body-lg text-white/90 mb-8 max-w-2xl mx-auto drop-shadow-md">Temukan keindahan alam yang belum tersentuh dan dukung produk unggulan karya masyarakat lokal. Harmoni antara warisan pedesaan dan kemajuan digital.</p>
+<div class="flex flex-col sm:flex-row gap-4 justify-center">
+<button class="bg-primary text-on-primary font-label-md text-label-md px-6 py-3 rounded-lg hover:bg-primary/90 transition-all shadow-[0_4px_14px_0_rgba(0,60,144,0.39)] hover:shadow-[0_6px_20px_rgba(0,60,144,0.23)] hover:-translate-y-[1px]">
+                        Jelajahi Wisata
+                    </button>
+<button class="bg-white/10 backdrop-blur-md text-white border border-white/50 font-label-md text-label-md px-6 py-3 rounded-lg hover:bg-white/20 transition-all">
+                        Belanja Produk UMKM
+                    </button>
+</div>
+</div>
+</section>
+<!-- Destinasi Wisata Section (Bento Grid Style) -->
+<section class="py-stack-lg md:py-[64px] px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto">
+<div class="text-center mb-stack-lg">
+<h2 class="font-headline-lg text-headline-lg text-on-surface mb-2">Destinasi Wisata Pilihan</h2>
+<p class="font-body-md text-body-md text-on-surface-variant max-w-2xl mx-auto">Rasakan kedamaian alam dan keindahan budaya lokal di spot-spot terbaik Siberobah.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-12 gap-gutter">
+<!-- Large Featured Card -->
+<div class="md:col-span-8 group relative rounded-xl overflow-hidden shadow-[0_8px_30px_rgb(0,0,0,0.04)] bg-surface border border-outline-variant/30 hover:shadow-[0_8px_30px_rgb(0,60,144,0.1)] transition-all duration-300 hover:-translate-y-1 h-[400px]">
+<div class="absolute inset-0 bg-cover bg-center w-full h-full transition-transform duration-700 group-hover:scale-105" data-alt="A spectacular cascading waterfall hidden within a dense, lush tropical forest. Sunlight streaming through the canopy, creating a mystical atmosphere. The water is crystal clear, pooling at the bottom over smooth stones. Shot with a wide-angle lens, vibrant greens and cool blues, representing the natural beauty of the village." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuA2Hf9NlwqKK5dnl4LSoF3V9f5Fnrhm88H47IrPIpUsdza7rP0mNecmICPwj84jkB4v9Q_z3cUrxyihZjtcImTHq6Obn5BpR-pOm0dVfaqG5WCus678w35Tif_zjy0KoT5lQgtrSWCWgt1HcS-ItLKyVh7WFj78ewOcp0TNu6kR9o0YZ8Zwoy7u1yJ6b797TEwDN1mywNRg-1f7_NjSzEWeXmEaoYawx9e324Q4jMXfKWq4HBKXJ3rK')"></div>
+<div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
+<div class="absolute bottom-0 left-0 p-6 w-full">
+<div class="flex justify-between items-end">
+<div>
+<span class="inline-flex items-center gap-1 bg-secondary/80 backdrop-blur-sm text-white font-label-sm text-label-sm px-2 py-1 rounded mb-3">
+<span class="material-symbols-outlined text-[14px]" data-icon="nature">nature</span> Alam
+                                </span>
+<h3 class="font-headline-md text-headline-md text-white mb-2">Curug Siberobah</h3>
+<p class="font-body-md text-body-md text-white/80 max-w-md line-clamp-2">Air terjun tersembunyi dengan kejernihan air alami, dikelilingi hutan tropis yang rindang. Cocok untuk relaksasi dan meditasi alam.</p>
+</div>
+<button class="hidden md:flex items-center gap-2 bg-white text-primary font-label-md text-label-md px-4 py-2 rounded-lg hover:bg-surface-container-low transition-colors whitespace-nowrap">
+                                Lihat Detail <span class="material-symbols-outlined text-[18px]" data-icon="arrow_forward">arrow_forward</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Small Card 1 -->
+<div class="md:col-span-4 group relative rounded-xl overflow-hidden shadow-[0_8px_30px_rgb(0,0,0,0.04)] bg-surface border border-outline-variant/30 hover:shadow-[0_8px_30px_rgb(0,60,144,0.1)] transition-all duration-300 hover:-translate-y-1 h-[400px] md:h-auto flex flex-col">
+<div class="relative h-48 w-full overflow-hidden">
+<div class="absolute inset-0 bg-cover bg-center w-full h-full transition-transform duration-700 group-hover:scale-105" data-alt="A serene pine forest with tall, straight trunks reaching into the sky. Soft morning mist lingering between the trees. A well-maintained wooden walkway winding through the forest, suggesting a smart, eco-friendly tourist facility. Peaceful, calm, cool color temperature." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCWOz6aUpaZmVLvK-MDuefLfU6zcu9OQK2E_9beI4fsHLp-OgybHI5Brr6rBi9Sv81QKZyevq2eb8iCpaFdqtqoAwPiUiw51YYSVAuZi_77_OByInRTfXwxi7doXjPLDbcd6KPTk9WJYYADUPPujVtRKjoG7i3U328ozkiRrlEcyHLRW9l_wVehDbaW1JtzDcJ0AVwm88EP4sAkH2YY8aCq8yJcqWvk3nrUe5L0GjSRbIXgkC2jxpJ0')"></div>
+</div>
+<div class="p-5 flex-grow flex flex-col justify-between bg-white relative">
+<div class="absolute top-0 left-0 w-full h-1 bg-secondary"></div>
+<div>
+<h3 class="font-headline-md text-[20px] font-semibold text-on-surface mb-2">Hutan Pinus Asri</h3>
+<p class="font-body-md text-[14px] text-on-surface-variant line-clamp-3 mb-4">Area perkemahan dan spot foto estetik di tengah jajaran pohon pinus yang menyejukkan.</p>
+</div>
+<button class="w-full text-center border border-primary text-primary font-label-md text-label-md px-4 py-2 rounded-lg hover:bg-primary/5 transition-colors">
+                            Lihat Detail
+                        </button>
+</div>
+</div>
+<!-- Small Card 2 -->
+<div class="md:col-span-6 group relative rounded-xl overflow-hidden shadow-[0_8px_30px_rgb(0,0,0,0.04)] bg-surface border border-outline-variant/30 hover:shadow-[0_8px_30px_rgb(0,60,144,0.1)] transition-all duration-300 hover:-translate-y-1 h-[300px]">
+<div class="absolute inset-0 bg-cover bg-center w-full h-full transition-transform duration-700 group-hover:scale-105" data-alt="A modern agrotourism farm featuring neatly organized rows of organic vegetables and a small, smart greenhouse in the background. Bright, sunny day. A local farmer demonstrating a modern agricultural technique. Represents the fusion of traditional farming and modern progress." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDcqEmODsfvUeqGy3tLIO1itwRjyJNoYWz8lPKPIHMeLnaPLPyHqVleJZjYVCdlV02Dm08SYEG5ijTe27S2e8SP2TzuILpHhYLcd0RmLRYSubWrqJzMlWqp8nH5HBgXuiNnbIlX_WomX1c_AENXBCtReVksPn6dBZ1fzWWV_N4NN-gvUBRVCkG8d7G1U6PCaC7aSOQML4rG3GtGumoHassaD537tw7tkp-3KyLnSwoqO3s2ttCCwIwm')"></div>
+<div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
+<div class="absolute bottom-0 left-0 p-5 w-full">
+<span class="inline-flex items-center gap-1 bg-secondary/80 backdrop-blur-sm text-white font-label-sm text-label-sm px-2 py-1 rounded mb-2">
+<span class="material-symbols-outlined text-[14px]" data-icon="agriculture">agriculture</span> Edukasi
+                        </span>
+<h3 class="font-headline-md text-[20px] font-semibold text-white mb-1">Agrowisata Cerdas</h3>
+<p class="font-body-md text-[14px] text-white/80 mb-3">Belajar pertanian organik terintegrasi teknologi.</p>
+<button class="text-white hover:text-primary-fixed flex items-center gap-1 font-label-sm transition-colors">
+                            Lihat Detail <span class="material-symbols-outlined text-[16px]" data-icon="arrow_forward">arrow_forward</span>
+</button>
+</div>
+</div>
+<!-- Small Card 3 -->
+<div class="md:col-span-6 group relative rounded-xl overflow-hidden shadow-[0_8px_30px_rgb(0,0,0,0.04)] bg-surface border border-outline-variant/30 hover:shadow-[0_8px_30px_rgb(0,60,144,0.1)] transition-all duration-300 hover:-translate-y-1 h-[300px]">
+<div class="absolute inset-0 bg-cover bg-center w-full h-full transition-transform duration-700 group-hover:scale-105" data-alt="A lively traditional village square acting as a cultural center. Traditional Indonesian architecture with a subtle modern touch. People wearing colorful local textiles. Warm, inviting lighting, highlighting the strong community bonds and cultural heritage of the smart village." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAbyJVMfOBzXtyLwe7Ll3zMfI4q8VBuUtNDS90Ms970tp6eWs5_g8m8wE7FYKmwJv6ld8XZW249L0HKTT4U2vvpdJjIVPtCa1sb3s6JNLNi_-TKJI1k9YrOn15ikWdGggByUINg_1GoeLKkOKXys5agFigd7kdyED9CoBJ0UiIylK5-Jsois__LJtgxnZHxQVA8tNylUE-C4JUJ_mPj4Fxe-LlFd4mA87mPCHOaxnS3m4hVlhOWvGDv')"></div>
+<div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
+<div class="absolute bottom-0 left-0 p-5 w-full">
+<span class="inline-flex items-center gap-1 bg-primary/80 backdrop-blur-sm text-white font-label-sm text-label-sm px-2 py-1 rounded mb-2">
+<span class="material-symbols-outlined text-[14px]" data-icon="museum">museum</span> Budaya
+                        </span>
+<h3 class="font-headline-md text-[20px] font-semibold text-white mb-1">Pusat Budaya Desa</h3>
+<p class="font-body-md text-[14px] text-white/80 mb-3">Pusat pelestarian seni tari dan kriya lokal.</p>
+<button class="text-white hover:text-primary-fixed flex items-center gap-1 font-label-sm transition-colors">
+                            Lihat Detail <span class="material-symbols-outlined text-[16px]" data-icon="arrow_forward">arrow_forward</span>
+</button>
+</div>
+</div>
+</div>
+</section>
+<!-- UMKM Section (Glassmorphism & Product Cards) -->
+<section class="py-stack-lg md:py-[64px] bg-surface-container-low relative overflow-hidden">
+<!-- Decorative blur blob -->
+<div class="absolute top-0 right-0 w-[500px] h-[500px] bg-primary/5 rounded-full blur-3xl -z-10 translate-x-1/3 -translate-y-1/3"></div>
+<div class="px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto">
+<div class="flex flex-col md:flex-row justify-between items-end mb-stack-lg gap-4">
+<div class="max-w-2xl">
+<span class="text-primary font-label-md text-label-md tracking-wider uppercase mb-2 block">Dukung Ekonomi Lokal</span>
+<h2 class="font-headline-lg text-headline-lg text-on-surface mb-2">Produk Unggulan UMKM</h2>
+<p class="font-body-md text-body-md text-on-surface-variant">Beli langsung dari pengrajin dan petani lokal Siberobah. Kualitas terjamin, mendukung pertumbuhan desa.</p>
+</div>
+<button class="hidden md:flex items-center gap-2 text-primary font-label-md text-label-md hover:underline">
+                        Lihat Semua Produk <span class="material-symbols-outlined text-[18px]" data-icon="arrow_forward">arrow_forward</span>
+</button>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-gutter">
+<!-- Product Card 1 -->
+<div class="bg-white rounded-xl shadow-[0_4px_20px_rgb(0,0,0,0.03)] border border-outline-variant/20 hover:shadow-[0_8px_30px_rgb(0,60,144,0.08)] transition-all duration-300 group flex flex-col">
+<div class="relative h-48 w-full overflow-hidden rounded-t-xl bg-surface-container-highest flex items-center justify-center p-4">
+<img class="object-contain h-full w-full transition-transform duration-500 group-hover:scale-110" data-alt="A beautifully packaged bag of premium local coffee beans from the village. The packaging is modern and eco-friendly, featuring a minimalist design with the village logo. Resting on a rustic wooden table next to a steaming cup of dark coffee. Warm, inviting cafe-style lighting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDnfC7zboX34WQYJASBAJ8W1mmr8F8N2f8BZL2IdY6f8QtCT3k5XBLbsIvDaUQUJCPGjoluJHUIVLsKTfOqkx4YXKSLlbevfD1J5SeZXNHeJGIJe3luTaDDBHX0L85nlAuHZbXXuLNpVkWPQgFbkF1RuXnIuAqdc-yCDvVTBUBu3j4NsfLjpFFQN385BR3GuzjUP6dH7PBhEsr9KODHEWoyaei2lLUPq3mQCakT5Pyh_IW2T8ctnjvD">
+<div class="absolute top-2 right-2 bg-white/90 backdrop-blur text-primary font-label-sm text-label-sm px-2 py-1 rounded-full shadow-sm">
+                                Terlaris
+                            </div>
+</div>
+<div class="p-4 flex-grow flex flex-col justify-between relative">
+<div class="absolute top-0 left-0 w-full h-[2px] bg-primary/20"></div>
+<div>
+<h3 class="font-headline-md text-[18px] font-semibold text-on-surface mb-1">Kopi Arabika Siberobah</h3>
+<p class="font-label-sm text-label-sm text-outline mb-2">Kopi Single Origin, 250g</p>
+<div class="font-label-md text-label-md text-primary font-bold mb-4">Rp 75.000</div>
+</div>
+<button class="w-full bg-secondary text-white font-label-md text-label-md px-4 py-2 rounded-lg hover:bg-secondary/90 transition-colors flex justify-center items-center gap-2">
+<span class="material-symbols-outlined text-[18px]" data-icon="shopping_cart">shopping_cart</span> Beli Sekarang
+                            </button>
+</div>
+</div>
+<!-- Product Card 2 -->
+<div class="bg-white rounded-xl shadow-[0_4px_20px_rgb(0,0,0,0.03)] border border-outline-variant/20 hover:shadow-[0_8px_30px_rgb(0,60,144,0.08)] transition-all duration-300 group flex flex-col">
+<div class="relative h-48 w-full overflow-hidden rounded-t-xl bg-surface-container-highest flex items-center justify-center p-4">
+<img class="object-contain h-full w-full transition-transform duration-500 group-hover:scale-110" data-alt="Intricately woven bamboo crafts, such as small baskets and home decor items, displayed on a clean white surface. Highlighting the detailed craftsmanship and natural textures. Soft, natural daylight, representing the traditional artisan skills of the local community." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCRWW_X8ZG2o5BbcgonskFdWi1RauRjpklnhWmvLJpE0nGOj6sRoFThtHNeZtYIr6xkGHGDW9acSfhN7uQkF810mTHRuc7ylCS90CEoc5Lwu7QNiXq0xlx2ospjJrWtKRQyrqbgFTgbuXrM--xMSMW2gUp22NfyTjBHivxmPnP_7U6F2kLcWepPVetZuofI4QUUvm0r8fAkvHrpGG9SDrVueux6T_Bv_1mCOctyfGGcggbcvC_9ZudY">
+</div>
+<div class="p-4 flex-grow flex flex-col justify-between relative">
+<div class="absolute top-0 left-0 w-full h-[2px] bg-secondary/30"></div>
+<div>
+<h3 class="font-headline-md text-[18px] font-semibold text-on-surface mb-1">Kerajinan Anyaman Bambu</h3>
+<p class="font-label-sm text-label-sm text-outline mb-2">Dekorasi Rumah Alami</p>
+<div class="font-label-md text-label-md text-primary font-bold mb-4">Rp 120.000</div>
+</div>
+<button class="w-full bg-[#25D366] text-white font-label-md text-label-md px-4 py-2 rounded-lg hover:bg-[#128C7E] transition-colors flex justify-center items-center gap-2">
+<svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"></path></svg>
+                                WhatsApp Penjual
+                            </button>
+</div>
+</div>
+<!-- Product Card 3 -->
+<div class="bg-white rounded-xl shadow-[0_4px_20px_rgb(0,0,0,0.03)] border border-outline-variant/20 hover:shadow-[0_8px_30px_rgb(0,60,144,0.08)] transition-all duration-300 group flex flex-col hidden md:flex">
+<div class="relative h-48 w-full overflow-hidden rounded-t-xl bg-surface-container-highest flex items-center justify-center p-4">
+<img class="object-contain h-full w-full transition-transform duration-500 group-hover:scale-110" data-alt="A jar of pure, natural wild honey with a rustic label, sitting on a wooden surface beside a honeycomb and some loose tea leaves. Backlit by soft sunlight, highlighting the golden amber color of the honey. Clean, modern, organic aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBEvo4nXZR31BBN4pAbAT08zbx69d3iFMUvAfuyWSa3mcZLk8fALfq4vyEXcP0DqMmwqyw14-C3krRxPBSd8guubiR-EYaSC699zdeFr1oeS4qA5ceSUWT3XQ9Q4fcYc5c1I9k2b_dwL-91lqLoaAFGJB5wTK5eiPMBOvEz_y7GOml-FtsPtaMwpiYNhUg_h9XVo8l6wbVOEqt_XIUY7NTRZigva0T4nYGasmqD1TYBgnbtOKxg0sZw">
+</div>
+<div class="p-4 flex-grow flex flex-col justify-between relative">
+<div class="absolute top-0 left-0 w-full h-[2px] bg-[#E1A024]"></div>
+<div>
+<h3 class="font-headline-md text-[18px] font-semibold text-on-surface mb-1">Madu Hutan Asli</h3>
+<p class="font-label-sm text-label-sm text-outline mb-2">100% Organik, 300ml</p>
+<div class="font-label-md text-label-md text-primary font-bold mb-4">Rp 85.000</div>
+</div>
+<button class="w-full border border-primary text-primary font-label-md text-label-md px-4 py-2 rounded-lg hover:bg-primary/5 transition-colors flex justify-center items-center gap-2">
+<span class="material-symbols-outlined text-[18px]" data-icon="visibility">visibility</span> Lihat Detail
+                            </button>
+</div>
+</div>
+<!-- Product Card 4 -->
+<div class="bg-white rounded-xl shadow-[0_4px_20px_rgb(0,0,0,0.03)] border border-outline-variant/20 hover:shadow-[0_8px_30px_rgb(0,60,144,0.08)] transition-all duration-300 group flex flex-col hidden lg:flex">
+<div class="relative h-48 w-full overflow-hidden rounded-t-xl bg-surface-container-highest flex items-center justify-center p-4">
+<img class="object-contain h-full w-full transition-transform duration-500 group-hover:scale-110" data-alt="Traditional Indonesian Batik fabric folded neatly, showcasing intricate geometric patterns in deep indigo and earthy brown colors. The fabric looks premium and high quality. Soft, even lighting to bring out the texture of the cloth. Represents local fashion MSMEs." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDcTc4oxIjp7ymLQZMpkySzP5nZqzkhZ6EK_2YR8u-Qoslu9vXigT86AuwE8cr_bjfR7lOAcZiBeZ5VDVQSQXwql_1t2LME3BxI64z1sZz9ACbaasN7PMSn7Sc-U78sMPD0uDssbgoV5mUU-eJrSVfl5gdKb72vhzy7vyUdslMJhXBKlLaMgmxXncyIMmcvTkEBg9ySXUnKQRHdBIp7ANcaW1j1KW2wd_LGKlhBiS_SqR2nhIgt-oaq">
+</div>
+<div class="p-4 flex-grow flex flex-col justify-between relative">
+<div class="absolute top-0 left-0 w-full h-[2px] bg-primary/20"></div>
+<div>
+<h3 class="font-headline-md text-[18px] font-semibold text-on-surface mb-1">Kain Batik Motif Lokal</h3>
+<p class="font-label-sm text-label-sm text-outline mb-2">Pewarna Alami, 2x1m</p>
+<div class="font-label-md text-label-md text-primary font-bold mb-4">Rp 250.000</div>
+</div>
+<button class="w-full bg-[#25D366] text-white font-label-md text-label-md px-4 py-2 rounded-lg hover:bg-[#128C7E] transition-colors flex justify-center items-center gap-2">
+<svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"></path></svg>
+                                WhatsApp
+                            </button>
+</div>
+</div>
+</div>
+<button class="md:hidden mt-6 w-full flex justify-center items-center gap-2 text-primary border border-primary font-label-md text-label-md px-4 py-3 rounded-lg hover:bg-primary/5">
+                    Lihat Semua Produk
+                </button>
+</div>
+</section>
+</main>
+<!-- Footer (Shared Component) -->
+<footer class="w-full mt-stack-lg bg-tertiary dark:bg-tertiary-container text-on-tertiary dark:text-on-tertiary-container font-body-md text-body-md">
+<div class="grid grid-cols-1 md:grid-cols-3 gap-gutter py-stack-lg px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto">
+<div class="flex flex-col gap-4">
+<a class="font-headline-md text-headline-md text-on-tertiary" href="#">Desa Siberobah</a>
+<p class="text-tertiary-fixed-dim text-sm max-w-sm">
+                    Harmonizing Heritage &amp; Progress. Mengintegrasikan kearifan lokal dengan teknologi cerdas untuk masa depan yang lebih baik.
+                </p>
+</div>
+<div class="flex flex-col gap-4">
+<h4 class="font-label-md text-label-md text-white uppercase tracking-wider">Tautan Cepat</h4>
+<div class="flex flex-col gap-2">
+<a class="text-tertiary-fixed-dim hover:text-white hover:underline transition-colors opacity-90 hover:opacity-100 w-fit" href="#">Privacy Policy</a>
+<a class="text-tertiary-fixed-dim hover:text-white hover:underline transition-colors opacity-90 hover:opacity-100 w-fit" href="#">Terms of Service</a>
+<a class="text-tertiary-fixed-dim hover:text-white hover:underline transition-colors opacity-90 hover:opacity-100 w-fit" href="#">Contact Us</a>
+<a class="text-tertiary-fixed-dim hover:text-white hover:underline transition-colors opacity-90 hover:opacity-100 w-fit" href="#">Sitemap</a>
+</div>
+</div>
+<div class="flex flex-col gap-4">
+<h4 class="font-label-md text-label-md text-white uppercase tracking-wider">Kontak</h4>
+<p class="text-tertiary-fixed-dim text-sm flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px]" data-icon="location_on">location_on</span> Balai Desa Siberobah, Kec. Smartville
+                </p>
+<p class="text-tertiary-fixed-dim text-sm flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px]" data-icon="mail">mail</span> info@siberobah.desa.id
+                </p>
+</div>
+</div>
+<div class="border-t border-white/10 mt-8">
+<div class="py-6 px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto text-center md:text-left text-sm text-tertiary-fixed-dim">
+                © 2024 Desa Siberobah. Harmonizing Heritage &amp; Progress.
+            </div>
+</div>
+</footer>
+
+
+</body></html>

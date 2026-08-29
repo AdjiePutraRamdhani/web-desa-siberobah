@@ -1,0 +1,318 @@
+<!DOCTYPE html><html lang="id"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Berita &amp; Pengumuman - Siberobah Smart Village</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-error-container": "#93000a",
+                        "on-background": "#1a1c1e",
+                        "surface-variant": "#e2e2e5",
+                        "outline": "#737784",
+                        "surface-bright": "#f9f9fc",
+                        "surface-container-high": "#e8e8ea",
+                        "primary-fixed-dim": "#b0c6ff",
+                        "tertiary-fixed": "#e5e2db",
+                        "on-secondary-fixed-variant": "#005312",
+                        "on-secondary": "#ffffff",
+                        "on-tertiary": "#ffffff",
+                        "surface": "#f9f9fc",
+                        "surface-dim": "#dadadc",
+                        "inverse-on-surface": "#f0f0f3",
+                        "on-primary-container": "#bcceff",
+                        "primary-container": "#0f52ba",
+                        "error": "#ba1a1a",
+                        "secondary": "#1b6d24",
+                        "on-tertiary-fixed": "#1c1c18",
+                        "on-surface": "#1a1c1e",
+                        "surface-container-lowest": "#ffffff",
+                        "surface-tint": "#1d59c1",
+                        "on-error": "#ffffff",
+                        "on-primary-fixed": "#001945",
+                        "inverse-primary": "#b0c6ff",
+                        "inverse-surface": "#2f3133",
+                        "outline-variant": "#c3c6d5",
+                        "surface-container-highest": "#e2e2e5",
+                        "secondary-container": "#a0f399",
+                        "secondary-fixed": "#a3f69c",
+                        "primary-fixed": "#d9e2ff",
+                        "on-secondary-fixed": "#002204",
+                        "surface-container": "#eeeef0",
+                        "on-primary-fixed-variant": "#00419c",
+                        "on-tertiary-container": "#d1cec8",
+                        "tertiary-fixed-dim": "#c9c6c0",
+                        "tertiary": "#41413c",
+                        "error-container": "#ffdad6",
+                        "tertiary-container": "#595853",
+                        "on-secondary-container": "#217128",
+                        "background": "#f9f9fc",
+                        "primary": "#003c90",
+                        "on-primary": "#ffffff",
+                        "on-tertiary-fixed-variant": "#474742",
+                        "on-surface-variant": "#434653",
+                        "secondary-fixed-dim": "#88d982",
+                        "surface-container-low": "#f3f3f6"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "margin-desktop": "40px",
+                        "container-max": "1280px",
+                        "gutter": "24px",
+                        "stack-md": "16px",
+                        "margin-mobile": "16px",
+                        "stack-lg": "32px",
+                        "stack-sm": "8px"
+                    },
+                    "fontFamily": {
+                        "headline-lg": ["Plus Jakarta Sans"],
+                        "body-md": ["Inter"],
+                        "label-md": ["Inter"],
+                        "headline-md": ["Plus Jakarta Sans"],
+                        "label-sm": ["Inter"],
+                        "headline-xl-mobile": ["Plus Jakarta Sans"],
+                        "body-lg": ["Inter"],
+                        "headline-xl": ["Plus Jakarta Sans"]
+                    },
+                    "fontSize": {
+                        "headline-lg": ["32px", { "lineHeight": "40px", "fontWeight": "600" }],
+                        "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "label-md": ["14px", { "lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "600" }],
+                        "headline-md": ["24px", { "lineHeight": "32px", "fontWeight": "600" }],
+                        "label-sm": ["12px", { "lineHeight": "16px", "letterSpacing": "0.03em", "fontWeight": "500" }],
+                        "headline-xl-mobile": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "body-lg": ["18px", { "lineHeight": "28px", "fontWeight": "400" }],
+                        "headline-xl": ["48px", { "lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+        .soft-shadow {
+            box-shadow: 0 4px 30px rgba(0, 60, 144, 0.04);
+        }
+        .hover-lift {
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+        .hover-lift:hover {
+            transform: translateY(-2px) scale(1.02);
+            box-shadow: 0 10px 40px rgba(0, 60, 144, 0.08);
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body-md min-h-screen flex flex-col">
+<!-- TopNavBar (Shared Component) -->
+<nav class="fixed top-0 w-full z-50 bg-white/70 dark:bg-surface-on-background/70 backdrop-blur-md shadow-sm">
+<div class="flex justify-between items-center px-margin-desktop max-w-container-max mx-auto h-20">
+<!-- Brand -->
+<a class="font-headline-md text-headline-md font-bold text-primary dark:text-primary-fixed-dim tracking-tight" href="#">Siberobah</a>
+<!-- Navigation Links (Desktop) -->
+<div class="hidden md:flex items-center gap-gutter font-label-md text-label-md"><a class="text-on-surface-variant dark:text-outline-variant hover:text-primary dark:hover:text-primary-fixed-dim transition-colors duration-200" href="#">Beranda</a><a class="text-on-surface-variant dark:text-outline-variant hover:text-primary dark:hover:text-primary-fixed-dim transition-colors duration-200" href="#">Profil</a><a class="text-on-surface-variant dark:text-outline-variant hover:text-primary dark:hover:text-primary-fixed-dim transition-colors duration-200" href="#">Layanan</a><a class="text-primary dark:text-primary-fixed-dim relative after:content-[''] after:absolute after:-bottom-2 after:left-1/2 after:-translate-x-1/2 after:w-1 after:h-1 after:bg-primary after:rounded-full hover:text-primary dark:hover:text-primary-fixed-dim transition-colors duration-200" href="#">Berita</a><a class="text-on-surface-variant dark:text-outline-variant hover:text-primary dark:hover:text-primary-fixed-dim transition-colors duration-200" href="#">UMKM</a></div>
+<!-- Trailing Action -->
+<div class="flex items-center gap-stack-md">
+<button class="font-label-md text-label-md bg-primary text-on-primary px-4 py-2 rounded-lg hover:bg-primary/90 transition-colors active:scale-95 transition-transform shadow-sm">Masuk</button>
+</div>
+</div>
+</nav>
+<!-- Main Content Canvas -->
+<main class="flex-grow pt-[100px] pb-stack-lg px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto w-full">
+<!-- Hero Section: Featured News -->
+<section class="mb-stack-lg">
+<div class="relative w-full h-[400px] md:h-[500px] rounded-xl overflow-hidden group cursor-pointer">
+<div class="absolute inset-0 bg-cover bg-center w-full h-full transition-transform duration-700 group-hover:scale-105" data-alt="A sweeping, cinematic aerial view of a vibrant, modernized Indonesian village at golden hour. Lush green terraced rice fields contrast with newly installed solar panels on community buildings. The scene is bathed in warm, soft sunlight, emphasizing a perfect harmony between traditional rural life and modern digital infrastructure. Professional architectural photography style." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuC8ZjL_ek0HaVtfCbn2lDIDl7Z35UA7skJAU7-dWXb4TyuGr-pwtvUADgOeGvir99Qp_8O1rOEhOeiw5vF3zyIhBY9luOWhUQEozsNsD33naJH8A8yf8qDj3kUh5C_7izXr6gytuz9U1Pt3SKjziD-bDYVbhhpqWXEVcz4f5zso6Mmpi8tK4zjeTTAcRNPjvbU2n6pc56lIbYAM5IwgT9lJf0nI3c4OrTpjq74VuLE5l2pHa0IKMWVY')"></div>
+<div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent"></div>
+<div class="absolute bottom-0 left-0 p-stack-lg w-full md:w-2/3">
+<span class="inline-block px-3 py-1 mb-3 bg-secondary/80 text-on-secondary font-label-sm text-label-sm rounded-full backdrop-blur-sm border border-white/20">Penghargaan Utama</span>
+<h1 class="font-headline-xl-mobile md:font-headline-xl text-headline-xl-mobile md:text-headline-xl text-white mb-stack-sm drop-shadow-md">Siberobah Raih Penghargaan Desa Digital Terbaik Tingkat Nasional</h1>
+<p class="font-body-lg text-body-lg text-white/90 mb-stack-md line-clamp-2">Pencapaian luar biasa berkat partisipasi aktif warga dalam mengadopsi teknologi tata kelola desa berbasis data, menjadikannya percontohan nasional untuk harmoni tradisi dan digital.</p>
+<div class="flex items-center text-white/80 font-label-sm text-label-sm gap-4">
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-[16px]">calendar_today</span> 12 Oktober 2024</span>
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-[16px]">schedule</span> 5 Menit Baca</span>
+</div>
+</div>
+</div>
+</section>
+<!-- 2-Column Layout -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter">
+<!-- Left Column: News Grid -->
+<div class="lg:col-span-8 flex flex-col gap-stack-lg">
+<h2 class="font-headline-lg text-headline-lg text-on-background border-b-2 border-primary/20 pb-2 inline-block w-fit">Berita Terkini</h2>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-stack-md">
+<!-- News Card 1 -->
+<article class="bg-surface-container-lowest rounded-lg border border-surface-variant soft-shadow hover-lift overflow-hidden flex flex-col relative before:absolute before:top-0 before:left-0 before:w-full before:h-1 before:bg-primary">
+<div class="h-48 w-full overflow-hidden">
+<img class="object-cover w-full h-full" data-alt="A modern agricultural scene showing local farmers in an Indonesian village using a tablet device to monitor crop health in a lush green field. The setting is bright and sunny, highlighting the integration of digital technology in traditional farming practices. Crisp, clean corporate photography aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBG6v3BWVfI3MDD0V0QKvMnv9aJdL3VOQmOQUImduEBrOmZsgvPDSPbGErYx1juWz89y6fIOiWMQVUTttPy1cGFRKC2Rw2tEvC9wLenWa6NK921JeYoqYQpeJO2god6lo3W3MhXbcHWs2Z51bMEtN8H7OCHFdk6oPsfHaiF9Otuj0wNFB5hg8N1tiHJvLPGtM4b7AjhhBTWYvgEw4ufzkUVj6vZflUfFNdwL8g4ITXmGpVyiapCoSyE">
+</div>
+<div class="p-4 flex flex-col flex-grow">
+<div class="flex items-center justify-between mb-2">
+<span class="bg-primary/10 text-primary px-2 py-0.5 rounded-full font-label-sm text-label-sm">Pembangunan</span>
+<span class="text-outline font-label-sm text-label-sm">10 Okt 2024</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-on-surface mb-2 line-clamp-2">Infrastruktur Irigasi Pintar Selesai Dibangun di Sektor Timur</h3>
+<p class="font-body-md text-body-md text-on-surface-variant mb-4 line-clamp-3 flex-grow">Sistem pengairan otomatis berbasis sensor tanah kini resmi beroperasi, diharapkan dapat meningkatkan hasil panen petani hingga 30% pada musim tanam mendatang.</p>
+<a class="font-label-md text-label-md text-primary flex items-center gap-1 hover:underline mt-auto" href="#">Baca Selengkapnya <span class="material-symbols-outlined text-[18px]">arrow_forward</span></a>
+</div>
+</article>
+<!-- News Card 2 -->
+<article class="bg-surface-container-lowest rounded-lg border border-surface-variant soft-shadow hover-lift overflow-hidden flex flex-col relative before:absolute before:top-0 before:left-0 before:w-full before:h-1 before:bg-secondary">
+<div class="h-48 w-full overflow-hidden">
+<img class="object-cover w-full h-full" data-alt="A community gathering in a clean, brightly lit village hall. Villagers of diverse ages are participating in a digital literacy workshop, looking at laptops and screens. The atmosphere is engaged, collaborative, and optimistic, reflecting a progressive community learning environment. Modern, well-lit indoor photography." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDXTxcIEHHyA35hoWIoidPRrjK5B8VEThCLN3Ux1CNhX4oPCMK7ZW-tymunduoVJ7mm-3FO0pcKoR3mleHJ6w8TlP38COye2ML8mffClyWwZ_By9KCv5cYu9Fij6HAsPaA-bS9_yUkcnXPUkPSUd5hRlUGU_Vj0EFX93AZaLM4NmUjLrdDlf83fBQFUubHkfH5m8zQS3lZjztcWmTTsdOZ5fSXWr-EwI5o7DXc_kKJ5v2udXD-aJSB4">
+</div>
+<div class="p-4 flex flex-col flex-grow">
+<div class="flex items-center justify-between mb-2">
+<span class="bg-secondary/10 text-secondary px-2 py-0.5 rounded-full font-label-sm text-label-sm">Kegiatan</span>
+<span class="text-outline font-label-sm text-label-sm">08 Okt 2024</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-on-surface mb-2 line-clamp-2">Pelatihan Literasi Digital Untuk UMKM Lokal Berjalan Sukses</h3>
+<p class="font-body-md text-body-md text-on-surface-variant mb-4 line-clamp-3 flex-grow">Lebih dari 50 pelaku usaha mikro di desa Siberobah telah menyelesaikan program pelatihan pemasaran digital dan pembukuan online selama sepekan.</p>
+<a class="font-label-md text-label-md text-primary flex items-center gap-1 hover:underline mt-auto" href="#">Baca Selengkapnya <span class="material-symbols-outlined text-[18px]">arrow_forward</span></a>
+</div>
+</article>
+<!-- News Card 3 -->
+<article class="bg-surface-container-lowest rounded-lg border border-surface-variant soft-shadow hover-lift overflow-hidden flex flex-col relative before:absolute before:top-0 before:left-0 before:w-full before:h-1 before:bg-tertiary">
+<div class="h-48 w-full overflow-hidden">
+<img class="object-cover w-full h-full" data-alt="Close up of traditional Indonesian woven crafts neatly displayed on a minimalist, modern wooden shelf. The lighting is soft and natural, emphasizing the texture of the crafts while maintaining a clean, contemporary aesthetic. A subtle smart-village branding tag is visible on the products." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAClhKmcSZesLiryxECzfoMsRbC2W1xdgp254bRQXrwxJkXM91jRgvUk3b8gRKSavHE1QWz6lkNea47geRQIWSuO-kdeI8Xs52dthsNSsuIgC31ifIrIrnkaLxKnsBKNkas2_IjeduTU3OXzJ3nhTHvewtOyoybm8mPib3x8-prrnWdzcdhufK9BzrjuOUjqT_lPf5N_-6Ncs_bYzI1L9aXrzH7wrOh0-Ds4BmaEHZByiAcdxZV2AYV">
+</div>
+<div class="p-4 flex flex-col flex-grow">
+<div class="flex items-center justify-between mb-2">
+<span class="bg-tertiary/10 text-tertiary px-2 py-0.5 rounded-full font-label-sm text-label-sm">Ekonomi</span>
+<span class="text-outline font-label-sm text-label-sm">05 Okt 2024</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-on-surface mb-2 line-clamp-2">Pameran Kerajinan Tangan Siberobah Tembus Pasar Ekspor</h3>
+<p class="font-body-md text-body-md text-on-surface-variant mb-4 line-clamp-3 flex-grow">Kemitraan strategis melalui platform e-commerce desa berhasil menghubungkan pengrajin lokal dengan pembeli internasional dari tiga negara Asia.</p>
+<a class="font-label-md text-label-md text-primary flex items-center gap-1 hover:underline mt-auto" href="#">Baca Selengkapnya <span class="material-symbols-outlined text-[18px]">arrow_forward</span></a>
+</div>
+</article>
+<!-- News Card 4 -->
+<article class="bg-surface-container-lowest rounded-lg border border-surface-variant soft-shadow hover-lift overflow-hidden flex flex-col relative before:absolute before:top-0 before:left-0 before:w-full before:h-1 before:bg-primary">
+<div class="h-48 w-full overflow-hidden bg-surface-container">
+<div class="w-full h-full flex items-center justify-center text-outline">
+<span class="material-symbols-outlined text-[48px]">health_and_safety</span>
+</div>
+</div>
+<div class="p-4 flex flex-col flex-grow">
+<div class="flex items-center justify-between mb-2">
+<span class="bg-primary/10 text-primary px-2 py-0.5 rounded-full font-label-sm text-label-sm">Kesehatan</span>
+<span class="text-outline font-label-sm text-label-sm">01 Okt 2024</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-on-surface mb-2 line-clamp-2">Pembaruan Layanan Posyandu Terintegrasi Aplikasi Desa</h3>
+<p class="font-body-md text-body-md text-on-surface-variant mb-4 line-clamp-3 flex-grow">Kini ibu dan anak dapat memantau jadwal imunisasi dan grafik pertumbuhan secara langsung melalui aplikasi Siberobah Mobile.</p>
+<a class="font-label-md text-label-md text-primary flex items-center gap-1 hover:underline mt-auto" href="#">Baca Selengkapnya <span class="material-symbols-outlined text-[18px]">arrow_forward</span></a>
+</div>
+</article>
+</div>
+<!-- Pagination -->
+<div class="flex justify-center items-center gap-2 mt-stack-md pt-4 border-t border-surface-variant">
+<button class="w-10 h-10 flex items-center justify-center rounded-lg border border-outline-variant text-on-surface-variant hover:bg-surface-container hover:text-primary transition-colors disabled:opacity-50" disabled=""><span class="material-symbols-outlined">chevron_left</span></button>
+<button class="w-10 h-10 flex items-center justify-center rounded-lg bg-primary text-on-primary font-label-md text-label-md shadow-sm">1</button>
+<button class="w-10 h-10 flex items-center justify-center rounded-lg border border-outline-variant text-on-surface-variant hover:bg-surface-container hover:text-primary font-label-md text-label-md transition-colors">2</button>
+<button class="w-10 h-10 flex items-center justify-center rounded-lg border border-outline-variant text-on-surface-variant hover:bg-surface-container hover:text-primary font-label-md text-label-md transition-colors">3</button>
+<span class="text-on-surface-variant font-label-md text-label-md">...</span>
+<button class="w-10 h-10 flex items-center justify-center rounded-lg border border-outline-variant text-on-surface-variant hover:bg-surface-container hover:text-primary transition-colors"><span class="material-symbols-outlined">chevron_right</span></button>
+</div>
+</div>
+<!-- Right Column: Sidebar (Announcements & Events) -->
+<aside class="lg:col-span-4 flex flex-col gap-stack-lg mt-stack-lg lg:mt-0">
+<!-- Pengumuman Penting -->
+<div class="bg-surface-bright rounded-xl border border-surface-variant p-stack-md soft-shadow">
+<div class="flex items-center gap-2 mb-4 border-b border-surface-variant pb-3">
+<span class="material-symbols-outlined text-error">campaign</span>
+<h3 class="font-headline-md text-headline-md text-on-surface">Pengumuman Penting</h3>
+</div>
+<ul class="flex flex-col gap-4">
+<li class="flex gap-3 group cursor-pointer p-2 -mx-2 rounded-lg hover:bg-surface-container transition-colors">
+<div class="flex-shrink-0 w-2 h-2 mt-2 rounded-full bg-error"></div>
+<div>
+<h4 class="font-label-md text-label-md text-on-surface group-hover:text-primary transition-colors">Pemadaman Listrik Terjadwal Area Utara</h4>
+<p class="font-label-sm text-label-sm text-outline mt-1">Hari ini, 10:00 - 14:00 WIB</p>
+</div>
+</li>
+<li class="flex gap-3 group cursor-pointer p-2 -mx-2 rounded-lg hover:bg-surface-container transition-colors">
+<div class="flex-shrink-0 w-2 h-2 mt-2 rounded-full bg-secondary"></div>
+<div>
+<h4 class="font-label-md text-label-md text-on-surface group-hover:text-primary transition-colors">Jadwal Imunisasi Balita Bulan Oktober</h4>
+<p class="font-label-sm text-label-sm text-outline mt-1">Segera daftar via aplikasi sebelum 15 Okt</p>
+</div>
+</li>
+<li class="flex gap-3 group cursor-pointer p-2 -mx-2 rounded-lg hover:bg-surface-container transition-colors">
+<div class="flex-shrink-0 w-2 h-2 mt-2 rounded-full bg-primary"></div>
+<div>
+<h4 class="font-label-md text-label-md text-on-surface group-hover:text-primary transition-colors">Rapat Desa Terbuka Pembahasan APBDes</h4>
+<p class="font-label-sm text-label-sm text-outline mt-1">Balai Desa, 18 Oktober 2024</p>
+</div>
+</li>
+</ul>
+<button class="w-full mt-4 py-2 border-2 border-outline-variant text-on-surface-variant rounded-lg font-label-md text-label-md hover:border-primary hover:text-primary transition-colors">Lihat Semua Pengumuman</button>
+</div>
+<!-- Agenda Kegiatan -->
+<div class="bg-surface-container-lowest rounded-xl border border-surface-variant p-stack-md soft-shadow">
+<div class="flex items-center gap-2 mb-4 border-b border-surface-variant pb-3">
+<span class="material-symbols-outlined text-primary">event_note</span>
+<h3 class="font-headline-md text-headline-md text-on-surface">Agenda Kegiatan</h3>
+</div>
+<div class="flex flex-col gap-3">
+<!-- Agenda Item 1 -->
+<div class="flex bg-surface-container-low rounded-lg overflow-hidden border border-surface-variant hover-lift cursor-pointer">
+<div class="bg-primary text-on-primary p-3 flex flex-col items-center justify-center min-w-[60px]">
+<span class="font-label-sm text-label-sm font-bold">OKT</span>
+<span class="font-headline-md text-headline-md font-bold leading-none">20</span>
+</div>
+<div class="p-3 flex flex-col justify-center">
+<h4 class="font-label-md text-label-md text-on-surface">Kerja Bakti Masal Pembersihan Sungai</h4>
+<p class="font-label-sm text-label-sm text-on-surface-variant flex items-center gap-1 mt-1"><span class="material-symbols-outlined text-[14px]">location_on</span> Area Jembatan Utama</p>
+</div>
+</div>
+<!-- Agenda Item 2 -->
+<div class="flex bg-surface-container-low rounded-lg overflow-hidden border border-surface-variant hover-lift cursor-pointer">
+<div class="bg-tertiary text-on-tertiary p-3 flex flex-col items-center justify-center min-w-[60px]">
+<span class="font-label-sm text-label-sm font-bold">OKT</span>
+<span class="font-headline-md text-headline-md font-bold leading-none">25</span>
+</div>
+<div class="p-3 flex flex-col justify-center">
+<h4 class="font-label-md text-label-md text-on-surface">Pasar Tani Digital Mingguan</h4>
+<p class="font-label-sm text-label-sm text-on-surface-variant flex items-center gap-1 mt-1"><span class="material-symbols-outlined text-[14px]">location_on</span> Alun-alun Desa</p>
+</div>
+</div>
+</div>
+</div>
+</aside>
+</div>
+</main>
+<!-- Footer (Shared Component) -->
+<footer class="bg-surface-container dark:bg-surface-container-highest w-full py-stack-lg border-t border-outline-variant dark:border-outline mt-auto">
+<div class="flex flex-col md:flex-row justify-between items-center px-margin-desktop max-w-container-max mx-auto space-y-stack-md md:space-y-0">
+<!-- Brand & Copyright -->
+<div class="flex flex-col items-center md:items-start text-center md:text-left gap-2">
+<span class="font-headline-md text-headline-md font-bold text-primary">Siberobah</span>
+<p class="font-body-md text-body-md text-on-surface-variant dark:text-outline-variant">© 2024 Siberobah Smart Village. Mewujudkan Harmoni Tradisi dan Digital.</p>
+</div>
+<!-- Footer Links -->
+<div class="flex flex-wrap justify-center gap-stack-md font-body-md text-body-md text-on-surface-variant dark:text-outline-variant">
+<a class="hover:text-primary dark:hover:text-primary-fixed-dim underline transition-all cursor-pointer" href="#">Kebijakan Privasi</a>
+<a class="hover:text-primary dark:hover:text-primary-fixed-dim underline transition-all cursor-pointer" href="#">Syarat &amp; Ketentuan</a>
+<a class="hover:text-primary dark:hover:text-primary-fixed-dim underline transition-all cursor-pointer" href="#">Peta Desa</a>
+<a class="hover:text-primary dark:hover:text-primary-fixed-dim underline transition-all cursor-pointer" href="#">Hubungi Kami</a>
+</div>
+</div>
+</footer>
+
+
+</body></html>

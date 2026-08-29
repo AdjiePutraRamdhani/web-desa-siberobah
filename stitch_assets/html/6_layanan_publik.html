@@ -1,0 +1,224 @@
+<!DOCTYPE html><html lang="id"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Layanan Publik - Desa Siberobah</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Plus+Jakarta+Sans:wght@600;700&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "error-container": "#ffdad6",
+                        "on-primary-fixed": "#001945",
+                        "surface-variant": "#e2e2e5",
+                        "primary-fixed": "#d9e2ff",
+                        "on-secondary-container": "#217128",
+                        "inverse-primary": "#b0c6ff",
+                        "surface-container-high": "#e8e8ea",
+                        "outline-variant": "#c3c6d5",
+                        "inverse-surface": "#2f3133",
+                        "on-primary-fixed-variant": "#00419c",
+                        "on-secondary-fixed-variant": "#005312",
+                        "surface-bright": "#f9f9fc",
+                        "surface-tint": "#1d59c1",
+                        "on-primary": "#ffffff",
+                        "error": "#ba1a1a",
+                        "surface-dim": "#dadadc",
+                        "on-surface-variant": "#434653",
+                        "on-error": "#ffffff",
+                        "tertiary-container": "#595853",
+                        "tertiary": "#41413c",
+                        "on-tertiary": "#ffffff",
+                        "on-error-container": "#93000a",
+                        "secondary": "#1b6d24",
+                        "primary-container": "#0f52ba",
+                        "secondary-fixed": "#a3f69c",
+                        "surface-container-low": "#f3f3f6",
+                        "surface-container": "#eeeef0",
+                        "tertiary-fixed": "#e5e2db",
+                        "tertiary-fixed-dim": "#c9c6c0",
+                        "primary-fixed-dim": "#b0c6ff",
+                        "on-background": "#1a1c1e",
+                        "on-tertiary-fixed": "#1c1c18",
+                        "surface-container-highest": "#e2e2e5",
+                        "outline": "#737784",
+                        "on-tertiary-container": "#d1cec8",
+                        "background": "#f9f9fc",
+                        "surface-container-lowest": "#ffffff",
+                        "secondary-container": "#a0f399",
+                        "on-surface": "#1a1c1e",
+                        "on-secondary-fixed": "#002204",
+                        "on-tertiary-fixed-variant": "#474742",
+                        "secondary-fixed-dim": "#88d982",
+                        "primary": "#003c90",
+                        "on-primary-container": "#bcceff",
+                        "on-secondary": "#ffffff",
+                        "surface": "#f9f9fc",
+                        "inverse-on-surface": "#f0f0f3"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "stack-sm": "8px",
+                        "container-max": "1280px",
+                        "margin-mobile": "16px",
+                        "margin-desktop": "40px",
+                        "gutter": "24px",
+                        "stack-md": "16px",
+                        "stack-lg": "32px"
+                    },
+                    "fontFamily": {
+                        "body-lg": ["Inter"],
+                        "label-md": ["Inter"],
+                        "headline-lg": ["Plus Jakarta Sans"],
+                        "label-sm": ["Inter"],
+                        "headline-md": ["Plus Jakarta Sans"],
+                        "body-md": ["Inter"],
+                        "headline-xl": ["Plus Jakarta Sans"],
+                        "headline-xl-mobile": ["Plus Jakarta Sans"]
+                    },
+                    "fontSize": {
+                        "body-lg": ["18px", { "lineHeight": "28px", "fontWeight": "400" }],
+                        "label-md": ["14px", { "lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "600" }],
+                        "headline-lg": ["32px", { "lineHeight": "40px", "fontWeight": "600" }],
+                        "label-sm": ["12px", { "lineHeight": "16px", "letterSpacing": "0.03em", "fontWeight": "500" }],
+                        "headline-md": ["24px", { "lineHeight": "32px", "fontWeight": "600" }],
+                        "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "headline-xl": ["48px", { "lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "headline-xl-mobile": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body {
+            background-color: theme('colors.background');
+            color: theme('colors.on-background');
+        }
+    </style>
+</head>
+<body class="font-body-md text-body-md antialiased min-h-screen flex flex-col">
+<!-- TopNavBar -->
+<nav class="bg-surface/70 backdrop-blur-md sticky top-0 w-full border-b border-outline-variant/30 shadow-sm z-50 transition-all duration-300 ease-in-out">
+<div class="flex justify-between items-center h-16 px-margin-desktop max-w-container-max mx-auto">
+<div class="font-headline-md text-headline-md text-primary font-bold">
+                Desa Siberobah
+            </div>
+<div class="hidden md:flex gap-gutter items-center"><a class="text-on-surface-variant hover:text-primary transition-colors font-label-md text-label-md" href="#">Beranda</a><a class="text-on-surface-variant hover:text-primary transition-colors font-label-md text-label-md" href="#">Profil</a><a class="text-primary relative after:content-[''] after:absolute after:-bottom-1 after:left-1/2 after:-translate-x-1/2 after:w-1 after:h-1 after:bg-primary after:rounded-full font-label-md text-label-md" href="#">Layanan</a><a class="text-on-surface-variant hover:text-primary transition-colors font-label-md text-label-md" href="#">Berita</a><a class="text-on-surface-variant hover:text-primary transition-colors font-label-md text-label-md" href="#">UMKM</a></div>
+<div class="flex items-center gap-stack-md">
+<button class="bg-primary text-on-primary font-label-md text-label-md px-4 py-2 rounded-lg hover:bg-primary-container transition-colors">
+                    Login
+                </button>
+</div>
+</div>
+</nav>
+<!-- Main Content Canvas -->
+<main class="flex-grow w-full max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop py-stack-lg flex flex-col gap-stack-lg">
+<!-- Header Section -->
+<section class="text-center md:text-left flex flex-col gap-stack-sm md:flex-row md:items-end justify-between">
+<div class="max-w-2xl">
+<h1 class="font-headline-xl-mobile md:font-headline-xl text-headline-xl-mobile md:text-headline-xl text-on-background mb-2">Portal Layanan Mandiri</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant">Akses mudah dan cepat untuk berbagai kebutuhan administrasi dan layanan publik Desa Siberobah.</p>
+</div>
+</section>
+<!-- Search & Tracking Bento -->
+<section class="grid grid-cols-1 lg:grid-cols-3 gap-gutter">
+<!-- Search Services -->
+<div class="lg:col-span-2 bg-surface-container-lowest rounded-xl p-stack-md border border-outline-variant/30 shadow-[0_8px_30px_rgb(0,60,144,0.04)] relative overflow-hidden">
+<div class="relative z-10 flex flex-col h-full justify-center">
+<h2 class="font-headline-md text-headline-md text-on-background mb-stack-sm">Cari Layanan</h2>
+<div class="relative w-full max-w-lg">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant">search</span>
+<input class="w-full bg-tertiary-fixed text-on-tertiary-fixed border border-outline-variant rounded-lg pl-10 pr-4 py-3 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent font-body-md text-body-md placeholder:text-outline transition-all" placeholder="Ketik jenis surat atau layanan..." type="text">
+</div>
+</div>
+</div>
+<!-- Tracking Permohonan -->
+<div class="bg-surface-container-lowest rounded-xl p-stack-md border border-outline-variant/30 shadow-[0_8px_30px_rgb(0,60,144,0.04)] hover:shadow-[0_12px_40px_rgb(0,60,144,0.08)] transition-all transform hover:-translate-y-1">
+<div class="flex items-center gap-stack-sm mb-stack-sm">
+<span class="material-symbols-outlined text-primary text-3xl">local_shipping</span>
+<h2 class="font-headline-md text-headline-md text-on-background">Tracking Permohonan</h2>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant mb-stack-md">Pantau status dokumen yang sedang diproses.</p>
+<div class="flex gap-2">
+<input class="flex-grow bg-tertiary-fixed text-on-tertiary-fixed border border-outline-variant rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent font-body-md text-body-md" placeholder="Nomor Resi / NIK" type="text">
+<button class="bg-primary text-on-primary p-2 rounded-lg hover:bg-primary-container transition-colors flex items-center justify-center">
+<span class="material-symbols-outlined">arrow_forward</span>
+</button>
+</div>
+</div>
+</section>
+<!-- Service Categories Grid -->
+<section class="flex flex-col gap-stack-md">
+<h2 class="font-headline-lg text-headline-lg text-on-background">Kategori Layanan</h2>
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-gutter">
+<!-- Persuratan -->
+<a class="group block bg-surface-container-lowest rounded-xl p-stack-md border border-outline-variant/30 shadow-[0_8px_30px_rgb(0,60,144,0.04)] hover:shadow-[0_12px_40px_rgb(0,60,144,0.08)] transition-all duration-300 transform hover:scale-[1.02] border-t-2 border-t-primary" href="#">
+<div class="bg-primary-fixed w-12 h-12 rounded-lg flex items-center justify-center mb-stack-md text-primary">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">description</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-on-background mb-1 group-hover:text-primary transition-colors">Persuratan</h3>
+<p class="font-body-md text-body-md text-on-surface-variant line-clamp-2">Pengajuan Surat Keterangan Usaha, Domisili, Tidak Mampu, dll.</p>
+</a>
+<!-- Kependudukan -->
+<a class="group block bg-surface-container-lowest rounded-xl p-stack-md border border-outline-variant/30 shadow-[0_8px_30px_rgb(0,60,144,0.04)] hover:shadow-[0_12px_40px_rgb(0,60,144,0.08)] transition-all duration-300 transform hover:scale-[1.02] border-t-2 border-t-secondary" href="#">
+<div class="bg-secondary-fixed w-12 h-12 rounded-lg flex items-center justify-center mb-stack-md text-secondary">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">group</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-on-background mb-1 group-hover:text-secondary transition-colors">Kependudukan</h3>
+<p class="font-body-md text-body-md text-on-surface-variant line-clamp-2">Layanan pembuatan KTP, KK, Akta Kelahiran, dan mutasi penduduk.</p>
+</a>
+<!-- Kesehatan -->
+<a class="group block bg-surface-container-lowest rounded-xl p-stack-md border border-outline-variant/30 shadow-[0_8px_30px_rgb(0,60,144,0.04)] hover:shadow-[0_12px_40px_rgb(0,60,144,0.08)] transition-all duration-300 transform hover:scale-[1.02] border-t-2 border-t-error" href="#">
+<div class="bg-error-container w-12 h-12 rounded-lg flex items-center justify-center mb-stack-md text-error">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">health_and_safety</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-on-background mb-1 group-hover:text-error transition-colors">Kesehatan</h3>
+<p class="font-body-md text-body-md text-on-surface-variant line-clamp-2">Informasi Posyandu, jadwal dokter desa, dan layanan darurat.</p>
+</a>
+<!-- Pendidikan -->
+<a class="group block bg-surface-container-lowest rounded-xl p-stack-md border border-outline-variant/30 shadow-[0_8px_30px_rgb(0,60,144,0.04)] hover:shadow-[0_12px_40px_rgb(0,60,144,0.08)] transition-all duration-300 transform hover:scale-[1.02] border-t-2 border-t-primary-container" href="#">
+<div class="bg-inverse-primary w-12 h-12 rounded-lg flex items-center justify-center mb-stack-md text-primary-container">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">school</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-on-background mb-1 group-hover:text-primary-container transition-colors">Pendidikan</h3>
+<p class="font-body-md text-body-md text-on-surface-variant line-clamp-2">Pendaftaran PAUD desa, info beasiswa, dan perpustakaan.</p>
+</a>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="bg-tertiary w-full mt-stack-lg flat no shadows">
+<div class="grid grid-cols-1 md:grid-cols-3 gap-gutter py-stack-lg px-margin-desktop max-w-container-max mx-auto">
+<div>
+<div class="font-headline-md text-headline-md text-on-tertiary mb-stack-sm">
+                    Desa Siberobah
+                </div>
+<p class="font-body-md text-body-md text-on-tertiary opacity-80">
+                    Harmonizing Heritage &amp; Progress.
+                </p>
+<p class="font-body-md text-body-md text-on-tertiary opacity-80 mt-2">
+                    © 2024 Desa Siberobah.
+                </p>
+</div>
+<div class="flex flex-col gap-2">
+<h4 class="font-label-md text-label-md text-on-tertiary uppercase tracking-wider mb-2">Tautan</h4>
+<a class="font-body-md text-body-md text-tertiary-fixed-dim hover:text-white transition-colors hover:underline opacity-90 hover:opacity-100 transition-opacity" href="#">Privacy Policy</a>
+<a class="font-body-md text-body-md text-tertiary-fixed-dim hover:text-white transition-colors hover:underline opacity-90 hover:opacity-100 transition-opacity" href="#">Terms of Service</a>
+<a class="font-body-md text-body-md text-tertiary-fixed-dim hover:text-white transition-colors hover:underline opacity-90 hover:opacity-100 transition-opacity" href="#">Contact Us</a>
+<a class="font-body-md text-body-md text-tertiary-fixed-dim hover:text-white transition-colors hover:underline opacity-90 hover:opacity-100 transition-opacity" href="#">Sitemap</a>
+</div>
+</div>
+</footer>
+
+
+</body></html>

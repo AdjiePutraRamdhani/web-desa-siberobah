@@ -1,0 +1,61 @@
+// Prisma schema for Desa Siberobah MySQL database
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+}
+
+model News {
+  id        String   @id @default(uuid())
+  title     String
+  slug      String   @unique
+  content   String   @db.Text
+  snippet   String   @db.Text
+  category  String
+  imageUrl  String?
+  author    String   @default("Admin Desa")
+  views     Int      @default(0)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model TourismUMKM {
+  id          String   @id @default(uuid())
+  name        String
+  type        String
+  category    String
+  description String   @db.Text
+  location    String
+  contact     String?
+  priceRange  String?
+  imageUrl    String?
+  rating      Float    @default(4.8)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+model PublicService {
+  id             String   @id @default(uuid())
+  title          String
+  category       String
+  description    String   @db.Text
+  requirements   String   @db.Text
+  processingTime String
+  cost           String   @default("Gratis")
+  icon           String?  @default("description")
+  formUrl        String?
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+}
+
+model VillageStat {
+  id       String @id @default(uuid())
+  label    String
+  value    String
+  unit     String?
+  icon     String?
+  category String @default("General")
+}
