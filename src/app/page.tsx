@@ -59,12 +59,6 @@ export default function HomePage() {
                   <span>Lihat Layanan Publik</span>
                   <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
                 </Link>
-                <Link
-                  href="/wisata-umkm"
-                  className="bg-white/10 hover:bg-white/20 text-white border border-white/20 font-semibold px-8 py-3.5 rounded-xl backdrop-blur-md transition-all text-center"
-                >
-                  Jelajahi Potensi Desa
-                </Link>
               </div>
             </MotionWrapper>
           </div>
@@ -89,7 +83,7 @@ export default function HomePage() {
               <MapPin className="w-6 h-6" />
             </div>
             <div>
-              <div className="text-2xl font-bold text-slate-900">1.250 Ha</div>
+              <div className="text-2xl font-bold text-slate-900">1.357 Ha</div>
               <div className="text-xs text-slate-500 font-medium">Luas Wilayah</div>
             </div>
           </div>
@@ -141,48 +135,6 @@ export default function HomePage() {
               </div>
             </MotionWrapper>
           ))}
-        </div>
-      </section>
-
-      {/* Tourism & UMKM Highlights */}
-      <section className="py-20 bg-slate-100/70 border-y border-slate-200/60 w-full">
-        <div className="max-w-7xl mx-auto px-4 md:px-10">
-          <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-12 gap-4">
-            <div>
-              <div className="text-emerald-700 font-bold text-xs uppercase tracking-wider mb-2">Potensi Lokal</div>
-              <h2 className="text-3xl font-bold text-slate-900">Wisata & Produk Unggulan</h2>
-            </div>
-            <Link href="/wisata-umkm" className="text-emerald-700 font-semibold hover:underline flex items-center gap-1">
-              Lihat Semua Potensi <ArrowRight className="w-4 h-4" />
-            </Link>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {featuredWisata.map((item, idx) => (
-              <MotionWrapper key={item.id} delay={idx * 0.1}>
-                <div className="bg-white rounded-2xl overflow-hidden border border-slate-200 shadow-sm hover:shadow-xl transition-all duration-300 group">
-                  <div className="relative h-48 overflow-hidden">
-                    <img
-                      src={item.imageUrl}
-                      alt={item.name}
-                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                    />
-                    <span className="absolute top-3 left-3 bg-emerald-700 text-white text-xs font-semibold px-3 py-1 rounded-full shadow">
-                      {item.type}
-                    </span>
-                  </div>
-                  <div className="p-6">
-                    <h3 className="font-bold text-slate-900 text-lg mb-2">{item.name}</h3>
-                    <p className="text-sm text-slate-600 line-clamp-2 mb-4">{item.description}</p>
-                    <div className="flex justify-between items-center text-xs text-slate-500 pt-3 border-t border-slate-100">
-                      <span>{item.location}</span>
-                      <span className="font-semibold text-amber-600">⭐ {item.rating}</span>
-                    </div>
-                  </div>
-                </div>
-              </MotionWrapper>
-            ))}
-          </div>
         </div>
       </section>
 

@@ -11,7 +11,7 @@ export default function Footer() {
     <footer className="w-full bg-slate-900 text-slate-300 pt-14 pb-8 border-t border-slate-800">
       <div className="max-w-7xl mx-auto px-4 md:px-10">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-10 pb-12 border-b border-slate-800">
-          
+
           {/* Col 1 */}
           <div className="space-y-4 md:col-span-1">
             <div className="flex items-center gap-2">
@@ -66,30 +66,6 @@ export default function Footer() {
               <li>Pengantar KK & KTP</li>
             </ul>
           </div>
-
-          {/* Col 4 */}
-          <div className="space-y-3">
-            <h4 className="font-semibold text-white text-base">Kontak Balai Desa</h4>
-            <ul className="space-y-2.5 text-sm">
-              <li className="flex items-start gap-2.5">
-                <MapPin className="w-4 h-4 text-emerald-400 shrink-0 mt-0.5" />
-                <span>Jl. Raya Siberobah No. 01, Kec. Siberobah</span>
-              </li>
-              <li className="flex items-center gap-2.5">
-                <Phone className="w-4 h-4 text-emerald-400 shrink-0" />
-                <span>(021) 8899-7766</span>
-              </li>
-              <li className="flex items-center gap-2.5">
-                <Mail className="w-4 h-4 text-emerald-400 shrink-0" />
-                <span>layanan@siberobah.desa.id</span>
-              </li>
-              <li className="flex items-center gap-2.5">
-                <Globe className="w-4 h-4 text-emerald-400 shrink-0" />
-                <span>www.siberobah.desa.id</span>
-              </li>
-            </ul>
-          </div>
-
         </div>
 
         <div className="pt-6 flex flex-col md:flex-row justify-between items-center text-xs text-slate-500 gap-4">

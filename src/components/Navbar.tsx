@@ -16,7 +16,6 @@ export default function Navbar() {
     { name: 'Profil', href: '/profil' },
     { name: 'Layanan', href: '/layanan' },
     { name: 'Berita', href: '/berita' },
-    { name: 'Wisata & UMKM', href: '/wisata-umkm' },
   ];
 
   return (
@@ -48,11 +47,10 @@ export default function Navbar() {
               <Link
                 key={link.href}
                 href={link.href}
-                className={`text-sm font-semibold transition-colors px-3 py-2 rounded-lg relative ${
-                  isActive
-                    ? 'text-emerald-700'
-                    : 'text-gray-600 hover:text-emerald-700 hover:bg-emerald-50/50'
-                }`}
+                className={`text-sm font-semibold transition-colors px-3 py-2 rounded-lg relative ${isActive
+                  ? 'text-emerald-700'
+                  : 'text-gray-600 hover:text-emerald-700 hover:bg-emerald-50/50'
+                  }`}
               >
                 {link.name}
                 {isActive && (
@@ -107,11 +105,10 @@ export default function Navbar() {
                     key={link.href}
                     href={link.href}
                     onClick={() => setMobileMenuOpen(false)}
-                    className={`block px-4 py-2.5 rounded-lg font-medium text-sm transition-colors ${
-                      isActive
-                        ? 'bg-emerald-50 text-emerald-700 font-semibold'
-                        : 'text-gray-700 hover:bg-gray-50'
-                    }`}
+                    className={`block px-4 py-2.5 rounded-lg font-medium text-sm transition-colors ${isActive
+                      ? 'bg-emerald-50 text-emerald-700 font-semibold'
+                      : 'text-gray-700 hover:bg-gray-50'
+                      }`}
                   >
                     {link.name}
                   </Link>

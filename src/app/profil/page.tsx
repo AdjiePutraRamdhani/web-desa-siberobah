@@ -38,7 +38,7 @@ export default function ProfilPage() {
           <MotionWrapper direction="right">
             <div className="relative rounded-2xl overflow-hidden shadow-xl border border-slate-200 h-[400px]">
               <img
-                src="https://lh3.googleusercontent.com/aida-public/AB6AXuBFd9AW1Azfy3d6_iyG_RGpUASRmNLygnwgsvaBzAVT99PQFPjnxA7ehyrJZjpOhWmmf1wwuVerdUlsqggqifwq63BqlTsapCYg_sOdtS0l29-w1drtm13sbc-doeqNOygbeqjabGtOycDwYJ4DHa7JAobXTb_KVQskK-5GK8VhUEk2LDoDVbdb6SQYjnsowzAzkY4TT3nuHlxtDOpb3fZh-3KVopxh0aUhSoLU0jZfI0PMCmWDcKZ5"
+                src="/sejarah.jpg"
                 alt="Sejarah Desa Siberobah"
                 className="w-full h-full object-cover"
               />
@@ -117,7 +117,7 @@ export default function ProfilPage() {
             <div className="bg-emerald-700 text-white rounded-2xl p-6 flex flex-col justify-between h-44 shadow-lg">
               <MapPin className="w-8 h-8 opacity-80" />
               <div>
-                <div className="text-3xl font-extrabold">1.250 <span className="text-sm font-normal">Ha</span></div>
+                <div className="text-3xl font-extrabold">1.357 <span className="text-sm font-normal">Ha</span></div>
                 <div className="text-xs text-emerald-100 font-medium">Luas Wilayah Total</div>
               </div>
             </div>
