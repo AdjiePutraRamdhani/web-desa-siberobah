@@ -26,6 +26,8 @@ import {
   Image,
 } from 'lucide-react';
 import { NewsItem } from '@/lib/data';
+import AdminPageContentEditor from '@/components/AdminPageContentEditor';
+import { Edit3 } from 'lucide-react';
 
 interface Submission {
   id: string;
@@ -43,8 +45,8 @@ export default function AdminDashboardPage() {
   const [isLoggedIn, setIsLoggedIn] = useState<boolean>(false);
   const [authChecking, setAuthChecking] = useState<boolean>(true);
 
-  // Active Tab: 'submissions' | 'news'
-  const [mainTab, setMainTab] = useState<'submissions' | 'news'>('submissions');
+  // Active Tab: 'submissions' | 'news' | 'pages'
+  const [mainTab, setMainTab] = useState<'submissions' | 'news' | 'pages'>('submissions');
 
   // Login Form States
   const [usernameInput, setUsernameInput] = useState('');
@@ -433,6 +435,18 @@ export default function AdminDashboardPage() {
             <Newspaper className="w-4 h-4" />
             <span>Kelola Berita & Pengumuman ({newsList.length})</span>
           </button>
+
+          <button
+            onClick={() => setMainTab('pages')}
+            className={`pb-4 flex items-center gap-2 border-b-2 transition-all ${
+              mainTab === 'pages'
+                ? 'border-emerald-600 text-emerald-700'
+                : 'border-transparent text-slate-500 hover:text-slate-800'
+            }`}
+          >
+            <Edit3 className="w-4 h-4" />
+            <span>Kelola Konten Halaman</span>
+          </button>
         </div>
 
         {/* --- TAB 1: SERVICE SUBMISSIONS --- */}
@@ -733,6 +747,9 @@ export default function AdminDashboardPage() {
             </div>
           </div>
         )}
+
+        {/* --- TAB 3: PAGE CONTENT MANAGEMENT --- */}
+        {mainTab === 'pages' && <AdminPageContentEditor />}
 
       </main>
 

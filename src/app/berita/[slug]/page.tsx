@@ -2,19 +2,72 @@ import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import MotionWrapper from '@/components/MotionWrapper';
 import ShareButton from '@/components/ShareButton';
-import { INITIAL_NEWS } from '@/lib/data';
+import { INITIAL_NEWS, NewsItem } from '@/lib/data';
 import { getNewsBySlugStore, getNewsStore } from '@/lib/newsStore';
+import { prisma } from '@/lib/db';
 import { ArrowLeft, Calendar, User, Eye, Tag, BookOpen } from 'lucide-react';
 
 export default async function DetailBeritaPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
-  const allNews = getNewsStore();
-  const article = getNewsBySlugStore(slug) || INITIAL_NEWS.find((item) => item.slug === slug) || allNews[0];
-  const relatedArticles = allNews.filter((item) => item.id !== article.id).slice(0, 3);
+  
+  let article: NewsItem | null = null;
+  let allNews: NewsItem[] = [];
+
+  if (prisma) {
+    try {
+      const dbArticle = await prisma.news.findUnique({
+        where: { slug },
+      });
+      if (dbArticle) {
+        article = {
+          id: dbArticle.id,
+          title: dbArticle.title,
+          slug: dbArticle.slug,
+          snippet: dbArticle.snippet,
+          content: dbArticle.content,
+          category: dbArticle.category,
+          imageUrl: dbArticle.imageUrl || '/hero.jpg',
+          author: dbArticle.author,
+          views: dbArticle.views,
+          date: dbArticle.createdAt ? new Date(dbArticle.createdAt).toISOString().split('T')[0] : new Date().toISOString().split('T')[0],
+        };
+      }
+
+      const dbAll = await prisma.news.findMany({
+        orderBy: { createdAt: 'desc' },
+      });
+      if (dbAll && dbAll.length > 0) {
+        allNews = dbAll.map((item: any) => ({
+          id: item.id,
+          title: item.title,
+          slug: item.slug,
+          snippet: item.snippet,
+          content: item.content,
+          category: item.category,
+          imageUrl: item.imageUrl || '/hero.jpg',
+          author: item.author,
+          views: item.views,
+          date: item.createdAt ? new Date(item.createdAt).toISOString().split('T')[0] : new Date().toISOString().split('T')[0],
+        }));
+      }
+    } catch (e) {
+      console.error('Error loading news from database:', e);
+    }
+  }
+
+  if (!article) {
+    article = getNewsBySlugStore(slug) || INITIAL_NEWS.find((item) => item.slug === slug) || null;
+  }
+
+  if (allNews.length === 0) {
+    allNews = getNewsStore();
+  }
 
   if (!article) {
     notFound();
   }
+
+  const relatedArticles = allNews.filter((item) => item.id !== article.id).slice(0, 3);
 
   return (
     <div className="flex flex-col min-h-screen bg-slate-50 text-slate-800">

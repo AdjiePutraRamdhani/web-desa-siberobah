@@ -57,7 +57,7 @@ export default function LayananPage() {
 
   return (
     <div className="flex flex-col min-h-screen bg-slate-50 text-slate-800">
-      
+
       {/* Header Banner */}
       <section className="relative w-full py-20 px-4 md:px-10 bg-slate-900 overflow-hidden">
         <div className="absolute inset-0 z-0 opacity-20">
@@ -85,20 +85,19 @@ export default function LayananPage() {
       </section>
 
       <main className="max-w-7xl mx-auto px-4 md:px-10 py-12 w-full space-y-12">
-        
+
         {/* Search & Category Filter */}
         <div className="flex flex-col md:flex-row justify-between items-center gap-6 bg-white p-6 rounded-2xl border border-slate-200 shadow-sm">
-          
+
           <div className="flex flex-wrap gap-2 w-full md:w-auto">
             {categories.map((cat) => (
               <button
                 key={cat}
                 onClick={() => setActiveCategory(cat)}
-                className={`px-5 py-2.5 rounded-xl text-sm font-bold transition-all ${
-                  activeCategory === cat
+                className={`px-5 py-2.5 rounded-xl text-sm font-bold transition-all ${activeCategory === cat
                     ? 'bg-emerald-700 text-white shadow'
                     : 'bg-slate-100 text-slate-600 hover:bg-slate-200'
-                }`}
+                  }`}
               >
                 {cat}
               </button>
@@ -168,37 +167,6 @@ export default function LayananPage() {
             </MotionWrapper>
           ))}
         </div>
-
-        {/* Procedure Banner */}
-        <section className="bg-gradient-to-r from-emerald-900 to-green-950 rounded-3xl p-8 md:p-12 text-white shadow-xl">
-          <div className="max-w-3xl space-y-6">
-            <div className="inline-flex items-center gap-2 bg-white/10 text-emerald-200 border border-white/20 px-3.5 py-1.5 rounded-full text-xs font-semibold uppercase tracking-wider">
-              <HelpCircle className="w-4 h-4" />
-              <span>Panduan Alur Pengajuan</span>
-            </div>
-            <h2 className="text-2xl md:text-3xl font-extrabold">3 Langkah Mudah Pengurusan Surat Online</h2>
-            
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 pt-4">
-              <div className="bg-white/10 p-5 rounded-2xl border border-white/10 backdrop-blur-md">
-                <div className="w-8 h-8 rounded-full bg-emerald-600 text-white font-bold flex items-center justify-center text-sm mb-3">1</div>
-                <h4 className="font-bold text-base mb-1">Pilih Layanan</h4>
-                <p className="text-xs text-emerald-100 leading-relaxed">Pilih jenis surat keterangan yang Anda butuhkan di daftar atas.</p>
-              </div>
-
-              <div className="bg-white/10 p-5 rounded-2xl border border-white/10 backdrop-blur-md">
-                <div className="w-8 h-8 rounded-full bg-emerald-600 text-white font-bold flex items-center justify-center text-sm mb-3">2</div>
-                <h4 className="font-bold text-base mb-1">Isi Formulir</h4>
-                <p className="text-xs text-emerald-100 leading-relaxed">Lengkapi identitas KTP & unggah foto berkas persyaratan yang diperlukan.</p>
-              </div>
-
-              <div className="bg-white/10 p-5 rounded-2xl border border-white/10 backdrop-blur-md">
-                <div className="w-8 h-8 rounded-full bg-emerald-600 text-white font-bold flex items-center justify-center text-sm mb-3">3</div>
-                <h4 className="font-bold text-base mb-1">Ambil Surat</h4>
-                <p className="text-xs text-emerald-100 leading-relaxed">Surat diproses dan siap diunduh digital atau diambil di Balai Desa.</p>
-              </div>
-            </div>
-          </div>
-        </section>
 
       </main>
 

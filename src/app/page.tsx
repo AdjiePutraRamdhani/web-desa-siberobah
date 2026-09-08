@@ -1,15 +1,37 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Link from 'next/link';
-import { ArrowRight, Leaf, ShieldCheck, Newspaper, Store, Users, MapPin, Award, CheckCircle2, Building } from 'lucide-react';
+import { ArrowRight, Leaf, ShieldCheck, Newspaper, Store, Users, MapPin, Award, CheckCircle2, Building, Calendar, User } from 'lucide-react';
 import MotionWrapper from '@/components/MotionWrapper';
-import { INITIAL_NEWS, INITIAL_SERVICES, INITIAL_WISATA_UMKM } from '@/lib/data';
+import { INITIAL_NEWS, INITIAL_SERVICES, INITIAL_WISATA_UMKM, NewsItem } from '@/lib/data';
 
 export default function HomePage() {
-  const featuredNews = INITIAL_NEWS.slice(0, 3);
+  // Sort initial news by date descending (terbaru dulu)
+  const initialSortedNews = [...INITIAL_NEWS].sort(
+    (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()
+  );
+
+  const [newsList, setNewsList] = useState<NewsItem[]>(initialSortedNews);
   const featuredWisata = INITIAL_WISATA_UMKM.slice(0, 3);
   const [heroImgError, setHeroImgError] = useState(false);
+
+  // Fetch berita terbaru secara real-time dari API / database
+  useEffect(() => {
+    fetch('/api/news')
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.success && Array.isArray(data.data) && data.data.length > 0) {
+          const sorted = [...data.data].sort(
+            (a: NewsItem, b: NewsItem) => new Date(b.date).getTime() - new Date(a.date).getTime()
+          );
+          setNewsList(sorted);
+        }
+      })
+      .catch(() => {});
+  }, []);
+
+  const featuredNews = newsList.slice(0, 3);
 
   return (
     <div className="flex flex-col min-h-screen bg-slate-50 text-slate-800">
@@ -37,9 +59,9 @@ export default function HomePage() {
 
             <MotionWrapper direction="up" delay={0.2}>
               <h1 className="text-4xl md:text-6xl font-extrabold text-white leading-tight mb-6 tracking-tight">
-                Mewujudkan Desa Siberobah <br />
+                Pemerintahan <br />
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 via-teal-300 to-green-300">
-                  Cerdas & Mandiri
+                  Desa Siberobah
                 </span>
               </h1>
             </MotionWrapper>

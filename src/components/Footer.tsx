@@ -39,19 +39,28 @@ export default function Footer() {
             <h4 className="font-semibold text-white text-base">Navigasi Utama</h4>
             <ul className="space-y-2 text-sm">
               <li>
-                <Link href="/" className="hover:text-white transition-colors">Beranda</Link>
+                <Link href="/" className="hover:text-white transition-colors">Desa Siberobah</Link>
               </li>
               <li>
-                <Link href="/profil" className="hover:text-white transition-colors">Profil Desa</Link>
+                <Link href="/berita" className="hover:text-white transition-colors">Kabar Desa</Link>
               </li>
               <li>
-                <Link href="/layanan" className="hover:text-white transition-colors">Layanan Publik</Link>
+                <Link href="/layanan" className="hover:text-white transition-colors">Pelayanan</Link>
               </li>
               <li>
-                <Link href="/berita" className="hover:text-white transition-colors">Berita & Pengumuman</Link>
+                <Link href="/kependudukan" className="hover:text-white transition-colors">Kependudukan</Link>
               </li>
               <li>
-                <Link href="/wisata-umkm" className="hover:text-white transition-colors">Wisata & UMKM</Link>
+                <Link href="/sejarah" className="hover:text-white transition-colors">Sejarah Desa</Link>
+              </li>
+              <li>
+                <Link href="/kelembagaan" className="hover:text-white transition-colors">Kelembagaan Desa</Link>
+              </li>
+              <li>
+                <Link href="/pad-desa" className="hover:text-white transition-colors">PAD Desa</Link>
+              </li>
+              <li>
+                <Link href="/potensi-desa" className="hover:text-white transition-colors">Potensi Desa</Link>
               </li>
             </ul>
           </div>
@@ -69,11 +78,14 @@ export default function Footer() {
         </div>
 
         <div className="pt-6 flex flex-col md:flex-row justify-between items-center text-xs text-slate-500 gap-4">
-          <p>© {new Date().getFullYear()} Desa Siberobah. All rights reserved. Harmonizing Heritage & Progress.</p>
-          <div className="flex space-x-6">
+          <p>© {new Date().getFullYear()} Desa Siberobah.</p>
+          <p>Created by KKN DESA SIBEROBAH UIN SUSKA RIAU 2026</p>
+          <div className="flex space-x-6 items-center">
             <a href="#" className="hover:text-slate-400">Kebijakan Privasi</a>
             <a href="#" className="hover:text-slate-400">Syarat & Ketentuan</a>
-            <a href="#" className="hover:text-slate-400">Peta Situs</a>
+            <Link href="/admin" className="hover:text-emerald-400 font-medium transition-colors">
+              Login Admin
+            </Link>
           </div>
         </div>
       </div>

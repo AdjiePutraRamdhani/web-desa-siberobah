@@ -1,18 +1,25 @@
 import { INITIAL_NEWS, NewsItem } from './data';
 
-let newsMemory: NewsItem[] = [...INITIAL_NEWS];
+const globalForNews = globalThis as unknown as { newsMemory: NewsItem[] };
+
+if (!globalForNews.newsMemory) {
+  globalForNews.newsMemory = [...INITIAL_NEWS];
+}
 
 export function getNewsStore(): NewsItem[] {
-  return [...newsMemory].sort(
+  return [...globalForNews.newsMemory].sort(
     (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()
   );
 }
 
 export function getNewsBySlugStore(slug: string): NewsItem | undefined {
-  return newsMemory.find((item) => item.slug === slug);
+  const target = decodeURIComponent(slug).toLowerCase();
+  return globalForNews.newsMemory.find(
+    (item) => item.slug.toLowerCase() === target || item.id === slug
+  );
 }
 
-export function addNewsStore(data: Omit<NewsItem, 'id' | 'views' | 'date'> & { date?: string }): NewsItem {
+export function addNewsStore(data: Omit<NewsItem, 'id' | 'views' | 'date'> & { date?: string; slug?: string }): NewsItem {
   const slug = data.slug || data.title.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)+/g, '');
   
   const newArticle: NewsItem = {
@@ -28,12 +35,17 @@ export function addNewsStore(data: Omit<NewsItem, 'id' | 'views' | 'date'> & { d
     date: data.date || new Date().toISOString().split('T')[0],
   };
 
-  newsMemory.unshift(newArticle);
+  const existingIdx = globalForNews.newsMemory.findIndex((item) => item.slug === slug);
+  if (existingIdx >= 0) {
+    globalForNews.newsMemory[existingIdx] = newArticle;
+  } else {
+    globalForNews.newsMemory.unshift(newArticle);
+  }
   return newArticle;
 }
 
 export function deleteNewsStore(idOrSlug: string): boolean {
-  const initialLen = newsMemory.length;
-  newsMemory = newsMemory.filter((item) => item.id !== idOrSlug && item.slug !== idOrSlug);
-  return newsMemory.length < initialLen;
+  const initialLen = globalForNews.newsMemory.length;
+  globalForNews.newsMemory = globalForNews.newsMemory.filter((item) => item.id !== idOrSlug && item.slug !== idOrSlug);
+  return globalForNews.newsMemory.length < initialLen;
 }

@@ -72,3 +72,10 @@ model ServiceSubmission {
   updatedAt    DateTime @updatedAt
 }
 
+model PageContent {
+  key       String   @id
+  content   String   @db.Text
+  updatedAt DateTime @updatedAt
+}
+
+

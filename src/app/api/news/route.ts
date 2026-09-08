@@ -59,11 +59,19 @@ export async function POST(request: Request) {
       );
     }
 
-    const slug = title.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)+/g, '');
+    let baseSlug = title.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)+/g, '');
+    if (!baseSlug) baseSlug = `berita-${Date.now()}`;
+    let slug = baseSlug;
 
     let created;
     if (prisma) {
       try {
+        // Ensure unique slug in DB if exists
+        const existing = await prisma.news.findUnique({ where: { slug } });
+        if (existing) {
+          slug = `${baseSlug}-${Date.now().toString().slice(-4)}`;
+        }
+
         created = await prisma.news.create({
           data: {
             title,
@@ -75,6 +83,7 @@ export async function POST(request: Request) {
             author: author || 'Admin Desa',
           },
         });
+        addNewsStore({ title, slug, snippet, content, category, imageUrl, author });
       } catch (dbErr) {
         created = addNewsStore({ title, slug, snippet, content, category, imageUrl, author });
       }
