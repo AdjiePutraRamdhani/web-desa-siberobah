@@ -1,6 +1,5 @@
 import { NextResponse } from 'next/server';
 import { prisma } from '@/lib/db';
-import { updateSubmissionStatusStore, deleteSubmissionStore } from '@/lib/submissionStore';
 
 export async function PATCH(
   request: Request,
@@ -18,35 +17,27 @@ export async function PATCH(
       );
     }
 
-    let updated;
-    if (prisma) {
-      try {
-        updated = await prisma.serviceSubmission.update({
-          where: { id },
-          data: { status },
-        });
-      } catch (dbErr) {
-        updated = updateSubmissionStatusStore(id, status);
-      }
-    } else {
-      updated = updateSubmissionStatusStore(id, status);
-    }
-
-    if (!updated) {
+    if (!prisma) {
       return NextResponse.json(
-        { success: false, message: 'Pengajuan tidak ditemukan.' },
-        { status: 404 }
+        { success: false, message: 'Database tidak terhubung.' },
+        { status: 500 }
       );
     }
+
+    const updated = await prisma.serviceSubmission.update({
+      where: { id },
+      data: { status },
+    });
 
     return NextResponse.json({
       success: true,
       message: 'Status pengajuan berhasil diperbarui.',
       data: updated,
     });
-  } catch (error) {
+  } catch (error: any) {
+    console.error('Error updating submission in database:', error);
     return NextResponse.json(
-      { success: false, message: 'Gagal memperbarui status pengajuan.' },
+      { success: false, message: error?.message || 'Gagal memperbarui status pengajuan di database.' },
       { status: 500 }
     );
   }
@@ -58,28 +49,26 @@ export async function DELETE(
 ) {
   try {
     const { id } = await params;
-    let deleted = false;
 
-    if (prisma) {
-      try {
-        await prisma.serviceSubmission.delete({
-          where: { id },
-        });
-        deleted = true;
-      } catch (dbErr) {
-        deleted = deleteSubmissionStore(id);
-      }
-    } else {
-      deleted = deleteSubmissionStore(id);
+    if (!prisma) {
+      return NextResponse.json(
+        { success: false, message: 'Database tidak terhubung.' },
+        { status: 500 }
+      );
     }
+
+    await prisma.serviceSubmission.delete({
+      where: { id },
+    });
 
     return NextResponse.json({
       success: true,
       message: 'Pengajuan berhasil dihapus.',
     });
-  } catch (error) {
+  } catch (error: any) {
+    console.error('Error deleting submission in database:', error);
     return NextResponse.json(
-      { success: false, message: 'Gagal menghapus pengajuan.' },
+      { success: false, message: error?.message || 'Gagal menghapus pengajuan dari database.' },
       { status: 500 }
     );
   }

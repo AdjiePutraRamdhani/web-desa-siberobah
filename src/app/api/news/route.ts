@@ -31,10 +31,6 @@ export async function GET(request: Request) {
     }
 
 
-    if (!news || news.length === 0) {
-      news = getNewsStore();
-    }
-
     if (category && category !== 'Semua') {
       news = news.filter((item: NewsItem) => item.category.toLowerCase() === category.toLowerCase());
     }
@@ -48,19 +44,11 @@ export async function GET(request: Request) {
 
     return NextResponse.json({ success: true, data: news });
   } catch (error) {
-    let filtered = getNewsStore();
-    if (category && category !== 'Semua') {
-      filtered = filtered.filter((item: NewsItem) => item.category.toLowerCase() === category.toLowerCase());
-    }
-    if (query) {
-      const q = query.toLowerCase();
-      filtered = filtered.filter(
-        (item: NewsItem) => item.title.toLowerCase().includes(q) || item.snippet.toLowerCase().includes(q)
-      );
-    }
-    return NextResponse.json({ success: true, data: filtered, isFallback: true });
+    console.error('Error fetching news:', error);
+    return NextResponse.json({ success: false, message: 'Gagal memuat berita dari database.', data: [] }, { status: 500 });
   }
 }
+
 
 export async function POST(request: Request) {
   try {
@@ -78,43 +66,40 @@ export async function POST(request: Request) {
     if (!baseSlug) baseSlug = `berita-${Date.now()}`;
     let slug = baseSlug;
 
-    let created;
-    if (prisma) {
-      try {
-        // Ensure unique slug in DB if exists
-        const existing = await prisma.news.findUnique({ where: { slug } });
-        if (existing) {
-          slug = `${baseSlug}-${Date.now().toString().slice(-4)}`;
-        }
-
-        created = await prisma.news.create({
-          data: {
-            title,
-            slug,
-            snippet,
-            content,
-            category: category || 'Berita',
-            imageUrl: imageUrl || '/hero.jpg',
-            author: author || 'Admin Desa',
-          },
-        });
-        addNewsStore({ title, slug, snippet, content, category, imageUrl, author });
-      } catch (dbErr) {
-        created = addNewsStore({ title, slug, snippet, content, category, imageUrl, author });
-      }
-    } else {
-      created = addNewsStore({ title, slug, snippet, content, category, imageUrl, author });
+    if (!prisma) {
+      return NextResponse.json({ success: false, message: 'Koneksi database tidak tersedia.' }, { status: 500 });
     }
+
+
+    // Ensure unique slug in DB if exists
+    const existing = await prisma.news.findUnique({ where: { slug } });
+    if (existing) {
+      slug = `${baseSlug}-${Date.now().toString().slice(-4)}`;
+    }
+
+    const created = await prisma.news.create({
+      data: {
+        title,
+        slug,
+        snippet,
+        content,
+        category: category || 'Berita',
+        imageUrl: imageUrl || '/hero.jpg',
+        author: author || 'Admin Desa',
+      },
+    });
 
     return NextResponse.json({
       success: true,
       message: 'Berita baru berhasil dipublikasikan!',
       data: created,
     });
-  } catch (error) {
+  } catch (error: any) {
+    console.error('Error creating news in database:', error);
     return NextResponse.json(
-      { success: false, message: 'Gagal mempublikasikan berita.' },
+      { success: false, message: error?.message || 'Gagal mempublikasikan berita ke database.' },
       { status: 500 }
     );
   }
 }
+

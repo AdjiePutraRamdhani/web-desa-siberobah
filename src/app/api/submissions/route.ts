@@ -1,6 +1,5 @@
 import { NextResponse } from 'next/server';
 import { prisma } from '@/lib/db';
-import { getSubmissionsStore, addSubmissionStore } from '@/lib/submissionStore';
 
 export async function GET(request: Request) {
   const { searchParams } = new URL(request.url);
@@ -14,23 +13,15 @@ export async function GET(request: Request) {
       });
     }
 
-    if (!items || items.length === 0) {
-      items = getSubmissionsStore();
-    }
-
     if (status && status !== 'Semua') {
-      items = items.filter((item: any) => item.status.toLowerCase() === status.toLowerCase());
+      items = items.filter((item: any) => item.status?.toLowerCase() === status.toLowerCase());
     }
 
     return NextResponse.json({ success: true, data: items });
   } catch (error) {
-    let items: any[] = getSubmissionsStore();
-    if (status && status !== 'Semua') {
-      items = items.filter((item: any) => item.status.toLowerCase() === status.toLowerCase());
-    }
-    return NextResponse.json({ success: true, data: items });
+    console.error('Error fetching submissions from database:', error);
+    return NextResponse.json({ success: false, message: 'Gagal mengambil pengajuan dari database.', data: [] }, { status: 500 });
   }
-
 }
 
 export async function POST(request: Request) {
@@ -45,34 +36,33 @@ export async function POST(request: Request) {
       );
     }
 
-    let createdItem;
-    if (prisma) {
-      try {
-        createdItem = await prisma.serviceSubmission.create({
-          data: {
-            serviceTitle,
-            name,
-            nik,
-            phone,
-            purpose,
-            status: 'Pending',
-          },
-        });
-      } catch (dbErr) {
-        createdItem = addSubmissionStore({ serviceTitle, name, nik, phone, purpose });
-      }
-    } else {
-      createdItem = addSubmissionStore({ serviceTitle, name, nik, phone, purpose });
+    if (!prisma) {
+      return NextResponse.json(
+        { success: false, message: 'Koneksi database tidak tersedia.' },
+        { status: 500 }
+      );
     }
+
+    const createdItem = await prisma.serviceSubmission.create({
+      data: {
+        serviceTitle,
+        name,
+        nik,
+        phone,
+        purpose,
+        status: 'Pending',
+      },
+    });
 
     return NextResponse.json({
       success: true,
       message: 'Pengajuan surat berhasil terkirim!',
       data: createdItem,
     });
-  } catch (error) {
+  } catch (error: any) {
+    console.error('Error creating submission in database:', error);
     return NextResponse.json(
-      { success: false, message: 'Gagal memproses pengajuan surat.' },
+      { success: false, message: error?.message || 'Gagal memproses pengajuan surat ke database.' },
       { status: 500 }
     );
   }

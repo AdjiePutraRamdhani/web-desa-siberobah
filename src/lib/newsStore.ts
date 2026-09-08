@@ -1,9 +1,9 @@
-import { INITIAL_NEWS, NewsItem } from './data';
+import { NewsItem } from './data';
 
 const globalForNews = globalThis as unknown as { newsMemory: NewsItem[] };
 
 if (!globalForNews.newsMemory) {
-  globalForNews.newsMemory = [...INITIAL_NEWS];
+  globalForNews.newsMemory = [];
 }
 
 export function getNewsStore(): NewsItem[] {
@@ -71,4 +71,3 @@ export function deleteNewsStore(idOrSlug: string): boolean {
   globalForNews.newsMemory = globalForNews.newsMemory.filter((item) => item.id !== idOrSlug && item.slug !== idOrSlug);
   return globalForNews.newsMemory.length < initialLen;
 }
-

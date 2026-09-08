@@ -1,7 +1,26 @@
 import MotionWrapper from '@/components/MotionWrapper';
 import { History, Eye, Target, Users, MapPin, Building, ShieldCheck } from 'lucide-react';
+import { getPageContentStore } from '@/lib/pageContentStore';
+import { prisma } from '@/lib/db';
 
-export default function ProfilPage() {
+export default async function ProfilPage() {
+  let sejarah = getPageContentStore().sejarah;
+  let kependudukan = getPageContentStore().kependudukan;
+
+  if (prisma) {
+    try {
+      const records = await prisma.pageContent.findMany();
+      records.forEach((rec: any) => {
+        if (rec.key === 'sejarah' && rec.content) {
+          try { sejarah = { ...sejarah, ...JSON.parse(rec.content) }; } catch (e) {}
+        }
+        if (rec.key === 'kependudukan' && rec.content) {
+          try { kependudukan = { ...kependudukan, ...JSON.parse(rec.content) }; } catch (e) {}
+        }
+      });
+    } catch (e) {}
+  }
+
   return (
     <div className="flex flex-col min-h-screen bg-slate-50 text-slate-800">
 
@@ -9,7 +28,7 @@ export default function ProfilPage() {
       <section className="relative w-full py-20 px-4 md:px-10 bg-slate-900 overflow-hidden">
         <div className="absolute inset-0 z-0 opacity-20">
           <img
-            src="https://lh3.googleusercontent.com/aida-public/AB6AXuBTg1o0CjEtAHcpvZEa6ecvl76PHXnvTmgjZ-W2Fgh7sYKdv7BKZIULI16z8hmaK-kDZm3kt_G5alTwsuZUplf2lNyxBgxagnWeC9xVkAaLrGgeSNQxXykUacSzRmm6u0IbqDY9zJP1jkJIxw_r60aSZpj4OWOAIPuZouXDiKZ8OExiB24zZnnkbYD3E8kX4XBqsVU_kE_o6j7KahbP5Sk23pajNCet7_42qusNif9HoFH1Mvu1D90d"
+            src={sejarah.imageUrl || '/sejarah.jpg'}
             alt="Profil Desa Siberobah"
             className="w-full h-full object-cover"
           />
@@ -25,7 +44,7 @@ export default function ProfilPage() {
               Profil <span className="text-emerald-400">Desa Siberobah</span>
             </h1>
             <p className="text-slate-300 text-base md:text-lg max-w-2xl mx-auto font-light">
-              Harmonisasi antara pelestarian warisan budaya lokal dan integrasi teknologi untuk kemajuan masyarakat yang berkelanjutan.
+              {sejarah.subtitle}
             </p>
           </MotionWrapper>
         </div>
@@ -38,8 +57,8 @@ export default function ProfilPage() {
           <MotionWrapper direction="right">
             <div className="relative rounded-2xl overflow-hidden shadow-xl border border-slate-200 h-[400px]">
               <img
-                src="/sejarah.jpg"
-                alt="Sejarah Desa Siberobah"
+                src={sejarah.imageUrl || '/sejarah.jpg'}
+                alt={sejarah.historyTitle}
                 className="w-full h-full object-cover"
               />
             </div>
@@ -51,12 +70,12 @@ export default function ProfilPage() {
                 <History className="w-5 h-5" />
                 <span>Sejarah Desa</span>
               </div>
-              <h2 className="text-3xl font-bold text-slate-900">Jejak Langkah Siberobah</h2>
+              <h2 className="text-3xl font-bold text-slate-900">{sejarah.historyTitle}</h2>
               <p className="text-slate-600 leading-relaxed">
-                Desa Siberobah bermula dari sebuah pemukiman agraris kecil yang kaya akan kearifan lokal. Nama &quot;Siberobah&quot; diambil dari filosofi kuno yang melambangkan kemampuan untuk beradaptasi dan berkembang seiring waktu tanpa melupakan akar tradisi.
+                {sejarah.historyText1}
               </p>
               <p className="text-slate-600 leading-relaxed">
-                Kini, desa kami telah bertransformasi menjadi desa percontohan yang mengedepankan pelayanan digital berbasis komunitas, membuktikan bahwa kemajuan teknologi dapat berjalan beriringan dengan nilai-nilai kekeluargaan.
+                {sejarah.historyText2}
               </p>
             </div>
           </MotionWrapper>
@@ -79,20 +98,15 @@ export default function ProfilPage() {
                 </div>
                 <h3 className="text-xl font-bold text-slate-900 mb-4">Visi Utama</h3>
                 <p className="text-slate-700 italic leading-relaxed text-base">
-                  &quot;Terwujudnya Desa Siberobah yang Mandiri, Sejahtera, Berbudaya, dan Terdepan dalam Inovasi Teknologi Berbasis Masyarakat pada tahun 2030.&quot;
+                  &quot;{sejarah.vision}&quot;
                 </p>
               </div>
             </MotionWrapper>
 
             {/* Mission List */}
             <div className="lg:col-span-2 grid grid-cols-1 sm:grid-cols-2 gap-6">
-              {[
-                { num: '01', title: 'Tata Kelola Digital', desc: 'Mewujudkan tata kelola pemerintahan desa yang transparan, akuntabel, dan efisien melalui pemanfaatan teknologi informasi.' },
-                { num: '02', title: 'Ekonomi Berkelanjutan', desc: 'Meningkatkan perekonomian masyarakat melalui pemberdayaan UMKM lokal dan optimalisasi BUMDes berbasis digital.' },
-                { num: '03', title: 'Pelestarian Budaya', desc: 'Menjaga dan melestarikan adat istiadat serta seni budaya lokal sebagai identitas dan daya tarik desa.' },
-                { num: '04', title: 'Infrastruktur Modern', desc: 'Membangun dan memelihara infrastruktur desa yang ramah lingkungan dan terintegrasi dengan sistem cerdas.' },
-              ].map((misi, idx) => (
-                <MotionWrapper key={misi.num} delay={0.1 * idx}>
+              {sejarah.missions.map((misi, idx) => (
+                <MotionWrapper key={misi.num || idx} delay={0.1 * idx}>
                   <div className="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm hover:shadow-md transition-shadow relative overflow-hidden h-full">
                     <div className="flex items-start gap-4">
                       <span className="w-10 h-10 rounded-xl bg-emerald-50 text-emerald-700 font-bold flex items-center justify-center shrink-0 text-sm">
@@ -125,7 +139,7 @@ export default function ProfilPage() {
             <div className="bg-white border border-slate-200 rounded-2xl p-6 flex flex-col justify-between h-44 shadow-sm">
               <Users className="w-8 h-8 text-emerald-600" />
               <div>
-                <div className="text-3xl font-extrabold text-slate-900">500</div>
+                <div className="text-3xl font-extrabold text-slate-900">{kependudukan.totalPenduduk}</div>
                 <div className="text-xs text-slate-500 font-medium">Total Penduduk</div>
               </div>
             </div>
@@ -133,7 +147,7 @@ export default function ProfilPage() {
             <div className="bg-white border border-slate-200 rounded-2xl p-6 flex flex-col justify-between h-44 shadow-sm">
               <Building className="w-8 h-8 text-emerald-600" />
               <div>
-                <div className="text-3xl font-extrabold text-slate-900">150</div>
+                <div className="text-3xl font-extrabold text-slate-900">{kependudukan.totalKK}</div>
                 <div className="text-xs text-slate-500 font-medium">Kepala Keluarga (KK)</div>
               </div>
             </div>
@@ -141,7 +155,7 @@ export default function ProfilPage() {
             <div className="bg-white border border-slate-200 rounded-2xl p-6 flex flex-col justify-between h-44 shadow-sm">
               <ShieldCheck className="w-8 h-8 text-amber-600" />
               <div>
-                <div className="text-3xl font-extrabold text-slate-900">3 Dusun</div>
+                <div className="text-3xl font-extrabold text-slate-900">{kependudukan.dusunList?.length || 3} Dusun</div>
                 <div className="text-xs text-slate-500 font-medium">Wilayah Administratif</div>
               </div>
             </div>

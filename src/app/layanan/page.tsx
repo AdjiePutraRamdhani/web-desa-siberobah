@@ -1,14 +1,27 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import MotionWrapper from '@/components/MotionWrapper';
 import { INITIAL_SERVICES, PublicServiceItem } from '@/lib/data';
 import { FileText, Clock, CheckCircle2, ShieldCheck, Download, Search, HelpCircle, Send } from 'lucide-react';
 
 export default function LayananPage() {
+  const [servicesList, setServicesList] = useState<PublicServiceItem[]>(INITIAL_SERVICES);
   const [selectedService, setSelectedService] = useState<PublicServiceItem | null>(null);
   const [searchQuery, setSearchQuery] = useState('');
   const [activeCategory, setActiveCategory] = useState<string>('Semua');
+
+  useEffect(() => {
+    fetch('/api/services')
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.success && Array.isArray(data.data) && data.data.length > 0) {
+          setServicesList(data.data);
+        }
+      })
+      .catch(() => {});
+  }, []);
+
 
   // Form State
   const [formData, setFormData] = useState({ name: '', nik: '', phone: '', purpose: '' });
@@ -47,13 +60,14 @@ export default function LayananPage() {
     }
   };
 
-  const filteredServices = INITIAL_SERVICES.filter((srv) => {
+  const filteredServices = servicesList.filter((srv) => {
     const matchesCat = activeCategory === 'Semua' || srv.category === activeCategory;
     const matchesSearch =
       srv.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
       srv.description.toLowerCase().includes(searchQuery.toLowerCase());
     return matchesCat && matchesSearch;
   });
+
 
   return (
     <div className="flex flex-col min-h-screen bg-slate-50 text-slate-800">

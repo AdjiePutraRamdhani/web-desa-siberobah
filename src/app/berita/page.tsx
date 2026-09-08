@@ -7,20 +7,24 @@ import { INITIAL_NEWS, NewsItem } from '@/lib/data';
 import { Search, Calendar, User, Eye, ArrowRight, Newspaper } from 'lucide-react';
 
 export default function BeritaPage() {
-  const [newsList, setNewsList] = useState<NewsItem[]>(INITIAL_NEWS);
+  const [newsList, setNewsList] = useState<NewsItem[]>([]);
+  const [newsLoading, setNewsLoading] = useState(true);
   const [activeCategory, setActiveCategory] = useState<string>('Semua');
   const [searchQuery, setSearchQuery] = useState('');
 
   useEffect(() => {
+    setNewsLoading(true);
     fetch('/api/news')
       .then((res) => res.json())
       .then((data) => {
-        if (data.success && Array.isArray(data.data) && data.data.length > 0) {
+        if (data.success && Array.isArray(data.data)) {
           setNewsList(data.data);
         }
       })
-      .catch(() => {});
+      .catch(() => {})
+      .finally(() => setNewsLoading(false));
   }, []);
+
 
   const categories = ['Semua', 'Berita', 'Pengumuman', 'Kegiatan'];
 

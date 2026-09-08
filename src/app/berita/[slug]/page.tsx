@@ -56,18 +56,11 @@ export default async function DetailBeritaPage({ params }: { params: Promise<{ s
   }
 
   if (!article) {
-    article = getNewsBySlugStore(slug) || INITIAL_NEWS.find((item) => item.slug === slug) || null;
-  }
-
-  if (allNews.length === 0) {
-    allNews = getNewsStore();
-  }
-
-  if (!article) {
     notFound();
   }
 
-  const relatedArticles = allNews.filter((item) => item.id !== article.id).slice(0, 3);
+  const relatedArticles = allNews.filter((item) => item.id !== article!.id).slice(0, 3);
+
 
   return (
     <div className="flex flex-col min-h-screen bg-slate-50 text-slate-800">

@@ -7,12 +7,7 @@ import MotionWrapper from '@/components/MotionWrapper';
 import { INITIAL_NEWS, INITIAL_SERVICES, INITIAL_WISATA_UMKM, NewsItem } from '@/lib/data';
 
 export default function HomePage() {
-  // Sort initial news by date descending (terbaru dulu)
-  const initialSortedNews = [...INITIAL_NEWS].sort(
-    (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()
-  );
-
-  const [newsList, setNewsList] = useState<NewsItem[]>(initialSortedNews);
+  const [newsList, setNewsList] = useState<NewsItem[]>([]);
   const featuredWisata = INITIAL_WISATA_UMKM.slice(0, 3);
   const [heroImgError, setHeroImgError] = useState(false);
 
@@ -21,7 +16,7 @@ export default function HomePage() {
     fetch('/api/news')
       .then((res) => res.json())
       .then((data) => {
-        if (data.success && Array.isArray(data.data) && data.data.length > 0) {
+        if (data.success && Array.isArray(data.data)) {
           const sorted = [...data.data].sort(
             (a: NewsItem, b: NewsItem) => new Date(b.date).getTime() - new Date(a.date).getTime()
           );
@@ -30,6 +25,7 @@ export default function HomePage() {
       })
       .catch(() => {});
   }, []);
+
 
   const featuredNews = newsList.slice(0, 3);
 
