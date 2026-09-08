@@ -44,8 +44,31 @@ export function addNewsStore(data: Omit<NewsItem, 'id' | 'views' | 'date'> & { d
   return newArticle;
 }
 
+export function updateNewsStore(
+  identifier: string,
+  data: Partial<Omit<NewsItem, 'id'>>
+): NewsItem | null {
+  const target = decodeURIComponent(identifier).toLowerCase();
+  const index = globalForNews.newsMemory.findIndex(
+    (item) => item.id === identifier || item.slug.toLowerCase() === target
+  );
+
+  if (index === -1) return null;
+
+  const existing = globalForNews.newsMemory[index];
+  const updatedItem: NewsItem = {
+    ...existing,
+    ...data,
+    slug: data.slug || existing.slug,
+  };
+
+  globalForNews.newsMemory[index] = updatedItem;
+  return updatedItem;
+}
+
 export function deleteNewsStore(idOrSlug: string): boolean {
   const initialLen = globalForNews.newsMemory.length;
   globalForNews.newsMemory = globalForNews.newsMemory.filter((item) => item.id !== idOrSlug && item.slug !== idOrSlug);
   return globalForNews.newsMemory.length < initialLen;
 }
+

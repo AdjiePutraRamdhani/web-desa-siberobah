@@ -189,10 +189,10 @@ export default function HomePage() {
                   </div>
                   <div className="p-6 flex flex-col flex-grow">
                     <div className="text-xs text-slate-400 mb-2">{news.date} • {news.author}</div>
-                    <h3 className="font-bold text-slate-900 text-lg mb-2 group-hover:text-emerald-700 transition-colors line-clamp-2">
+                    <h3 className="font-bold text-slate-900 text-lg mb-2 group-hover:text-emerald-700 transition-colors line-clamp-2 break-words [overflow-wrap:anywhere]">
                       {news.title}
                     </h3>
-                    <p className="text-sm text-slate-600 line-clamp-3 mb-4 flex-grow">{news.snippet}</p>
+                    <p className="text-sm text-slate-600 line-clamp-3 mb-4 flex-grow break-words [overflow-wrap:anywhere]">{news.snippet}</p>
                     <span className="text-emerald-700 font-semibold text-xs flex items-center gap-1 group-hover:translate-x-1 transition-transform">
                       Baca Selengkapnya <ArrowRight className="w-3.5 h-3.5" />
                     </span>

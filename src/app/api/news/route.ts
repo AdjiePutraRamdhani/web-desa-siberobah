@@ -11,10 +11,25 @@ export async function GET(request: Request) {
   try {
     let news: NewsItem[] = [];
     if (prisma) {
-      news = await prisma.news.findMany({
+      const dbNews = await prisma.news.findMany({
         orderBy: { createdAt: 'desc' },
       });
+      if (dbNews && dbNews.length > 0) {
+        news = dbNews.map((n: any) => ({
+          id: n.id,
+          title: n.title,
+          slug: n.slug,
+          content: n.content,
+          snippet: n.snippet,
+          category: n.category,
+          imageUrl: n.imageUrl || '/hero.jpg',
+          author: n.author,
+          views: n.views,
+          date: n.createdAt ? new Date(n.createdAt).toISOString().split('T')[0] : new Date().toISOString().split('T')[0],
+        }));
+      }
     }
+
 
     if (!news || news.length === 0) {
       news = getNewsStore();

@@ -1,6 +1,6 @@
 import { NextResponse } from 'next/server';
 import { prisma } from '@/lib/db';
-import { getNewsBySlugStore, deleteNewsStore } from '@/lib/newsStore';
+import { getNewsBySlugStore, updateNewsStore, deleteNewsStore } from '@/lib/newsStore';
 
 export async function GET(
   request: Request,
@@ -38,6 +38,86 @@ export async function GET(
   }
 }
 
+export async function PUT(
+  request: Request,
+  context: { params: Promise<{ slug: string }> }
+) {
+  const { slug } = await context.params;
+
+  try {
+    const body = await request.json();
+    const { title, snippet, content, category, imageUrl, author } = body;
+
+    if (!title || !snippet || !content) {
+      return NextResponse.json(
+        { success: false, message: 'Judul, Ringkasan, dan Isi Berita wajib diisi.' },
+        { status: 400 }
+      );
+    }
+
+    let updatedArticle;
+    if (prisma) {
+      try {
+        updatedArticle = await prisma.news.update({
+          where: { slug },
+          data: {
+            title,
+            snippet,
+            content,
+            category: category || 'Berita',
+            imageUrl: imageUrl || '/hero.jpg',
+            author: author || 'Admin Desa',
+          },
+        });
+        updateNewsStore(slug, {
+          title,
+          snippet,
+          content,
+          category: category || 'Berita',
+          imageUrl: imageUrl || '/hero.jpg',
+          author: author || 'Admin Desa',
+        });
+      } catch (dbErr) {
+        updatedArticle = updateNewsStore(slug, {
+          title,
+          snippet,
+          content,
+          category: category || 'Berita',
+          imageUrl: imageUrl || '/hero.jpg',
+          author: author || 'Admin Desa',
+        });
+      }
+    } else {
+      updatedArticle = updateNewsStore(slug, {
+        title,
+        snippet,
+        content,
+        category: category || 'Berita',
+        imageUrl: imageUrl || '/hero.jpg',
+        author: author || 'Admin Desa',
+      });
+    }
+
+    if (!updatedArticle) {
+      return NextResponse.json(
+        { success: false, message: 'Berita tidak ditemukan untuk diperbarui.' },
+        { status: 404 }
+      );
+    }
+
+    return NextResponse.json({
+      success: true,
+      message: 'Berita berhasil diperbarui!',
+      data: updatedArticle,
+    });
+  } catch (error) {
+    return NextResponse.json(
+      { success: false, message: 'Terjadi kesalahan saat memperbarui berita.' },
+      { status: 500 }
+    );
+  }
+}
+
 export async function DELETE(
   request: Request,
   context: { params: Promise<{ slug: string }> }
@@ -70,3 +150,4 @@ export async function DELETE(
     );
   }
 }
+

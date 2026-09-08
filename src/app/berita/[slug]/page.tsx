@@ -95,7 +95,7 @@ export default async function DetailBeritaPage({ params }: { params: Promise<{ s
               </span>
             </div>
 
-            <h1 className="text-3xl md:text-5xl font-extrabold leading-tight text-white mb-6">
+            <h1 className="text-3xl md:text-5xl font-extrabold leading-tight text-white mb-6 break-words [overflow-wrap:anywhere]">
               {article.title}
             </h1>
 
@@ -120,7 +120,7 @@ export default async function DetailBeritaPage({ params }: { params: Promise<{ s
       <main className="max-w-7xl mx-auto px-4 md:px-10 py-12 w-full grid grid-cols-1 lg:grid-cols-3 gap-12">
         
         {/* Main Content */}
-        <div className="lg:col-span-2 space-y-8">
+        <div className="lg:col-span-2 space-y-8 min-w-0">
           <MotionWrapper direction="up">
             <div className="rounded-2xl overflow-hidden shadow-lg border border-slate-200 mb-8 max-h-[450px]">
               <img
@@ -130,14 +130,15 @@ export default async function DetailBeritaPage({ params }: { params: Promise<{ s
               />
             </div>
 
-            <div className="bg-white p-8 rounded-2xl border border-slate-200 shadow-sm space-y-6 text-slate-700 text-base leading-relaxed">
-              <p className="text-lg font-medium text-slate-900 leading-relaxed border-l-4 border-emerald-600 pl-4 py-1 italic bg-emerald-50/50 rounded-r-lg">
+            <div className="bg-white p-6 sm:p-8 rounded-2xl border border-slate-200 shadow-sm space-y-6 text-slate-700 text-base leading-relaxed break-words [overflow-wrap:anywhere] overflow-hidden">
+              <p className="text-lg font-medium text-slate-900 leading-relaxed border-l-4 border-emerald-600 pl-4 py-1 italic bg-emerald-50/50 rounded-r-lg break-words [overflow-wrap:anywhere]">
                 {article.snippet}
               </p>
 
               {article.content.split('\n\n').map((paragraph, idx) => (
-                <p key={idx}>{paragraph}</p>
+                <p key={idx} className="break-words [overflow-wrap:anywhere] whitespace-pre-line">{paragraph}</p>
               ))}
+
 
               <div className="pt-8 border-t border-slate-100 flex flex-col sm:flex-row justify-between items-center gap-4">
                 <div className="flex items-center gap-2 text-xs font-semibold text-slate-500">
@@ -151,7 +152,7 @@ export default async function DetailBeritaPage({ params }: { params: Promise<{ s
         </div>
 
         {/* Sidebar */}
-        <div className="space-y-8">
+        <div className="space-y-8 min-w-0">
           <MotionWrapper direction="left">
             <div className="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm space-y-6">
               <div className="flex items-center gap-2 font-bold text-slate-900 text-lg border-b border-slate-100 pb-4">
@@ -168,11 +169,11 @@ export default async function DetailBeritaPage({ params }: { params: Promise<{ s
                         alt={rel.title}
                         className="w-20 h-20 rounded-xl object-cover shrink-0 group-hover:scale-105 transition-transform"
                       />
-                      <div>
+                      <div className="min-w-0 flex-1">
                         <span className="text-[10px] font-bold text-emerald-700 uppercase bg-emerald-50 px-2 py-0.5 rounded">
                           {rel.category}
                         </span>
-                        <h4 className="font-bold text-slate-900 text-sm mt-1 group-hover:text-emerald-700 transition-colors line-clamp-2">
+                        <h4 className="font-bold text-slate-900 text-sm mt-1 group-hover:text-emerald-700 transition-colors line-clamp-2 break-words [overflow-wrap:anywhere]">
                           {rel.title}
                         </h4>
                         <div className="text-xs text-slate-400 mt-1">{rel.date}</div>

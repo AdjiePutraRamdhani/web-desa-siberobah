@@ -130,10 +130,10 @@ export default function BeritaPage() {
                         </span>
                       </div>
 
-                      <h3 className="font-bold text-slate-900 text-xl mb-3 group-hover:text-emerald-700 transition-colors line-clamp-2 leading-snug">
+                      <h3 className="font-bold text-slate-900 text-xl mb-3 group-hover:text-emerald-700 transition-colors line-clamp-2 leading-snug break-words [overflow-wrap:anywhere]">
                         {news.title}
                       </h3>
-                      <p className="text-slate-600 text-sm leading-relaxed line-clamp-3 mb-6 flex-grow">
+                      <p className="text-slate-600 text-sm leading-relaxed line-clamp-3 mb-6 flex-grow break-words [overflow-wrap:anywhere]">
                         {news.snippet}
                       </p>
 

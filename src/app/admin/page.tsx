@@ -65,6 +65,7 @@ export default function AdminDashboardPage() {
   const [newsList, setNewsList] = useState<NewsItem[]>([]);
   const [newsLoading, setNewsLoading] = useState(false);
   const [showAddNewsModal, setShowAddNewsModal] = useState(false);
+  const [editingNewsItem, setEditingNewsItem] = useState<NewsItem | null>(null);
   const [submittingNews, setSubmittingNews] = useState(false);
   const [uploadingImage, setUploadingImage] = useState(false);
   const [newsFormData, setNewsFormData] = useState({
@@ -75,6 +76,7 @@ export default function AdminDashboardPage() {
     snippet: '',
     content: '',
   });
+
 
   const handleImageFileUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
@@ -219,18 +221,48 @@ export default function AdminDashboardPage() {
     }
   };
 
-  const handleCreateNews = async (e: React.FormEvent) => {
+  const handleOpenAddNews = () => {
+    setEditingNewsItem(null);
+    setNewsFormData({
+      title: '',
+      category: 'Berita',
+      author: 'Tim Desa Siberobah',
+      imageUrl: '/hero.jpg',
+      snippet: '',
+      content: '',
+    });
+    setShowAddNewsModal(true);
+  };
+
+  const handleOpenEditNews = (news: NewsItem) => {
+    setEditingNewsItem(news);
+    setNewsFormData({
+      title: news.title || '',
+      category: news.category || 'Berita',
+      author: news.author || 'Tim Desa Siberobah',
+      imageUrl: news.imageUrl || '/hero.jpg',
+      snippet: news.snippet || '',
+      content: news.content || '',
+    });
+    setShowAddNewsModal(true);
+  };
+
+  const handleSaveNews = async (e: React.FormEvent) => {
     e.preventDefault();
     setSubmittingNews(true);
     try {
-      const res = await fetch('/api/news', {
-        method: 'POST',
+      const isEditing = Boolean(editingNewsItem);
+      const endpoint = isEditing ? `/api/news/${editingNewsItem!.slug}` : '/api/news';
+      const method = isEditing ? 'PUT' : 'POST';
+
+      const res = await fetch(endpoint, {
+        method,
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(newsFormData),
       });
       const data = await res.json();
       if (data.success) {
-        alert('Berita berhasil dipublikasikan!');
+        alert(isEditing ? 'Berita berhasil diperbarui!' : 'Berita berhasil dipublikasikan!');
         setNewsFormData({
           title: '',
           category: 'Berita',
@@ -239,13 +271,14 @@ export default function AdminDashboardPage() {
           snippet: '',
           content: '',
         });
+        setEditingNewsItem(null);
         setShowAddNewsModal(false);
         fetchNews();
       } else {
-        alert(data.message || 'Gagal menambahkan berita.');
+        alert(data.message || (isEditing ? 'Gagal memperbarui berita.' : 'Gagal menambahkan berita.'));
       }
     } catch (err) {
-      alert('Terjadi kesalahan jaringan saat mempublikasikan berita.');
+      alert('Terjadi kesalahan jaringan saat menyimpan berita.');
     } finally {
       setSubmittingNews(false);
     }
@@ -263,6 +296,7 @@ export default function AdminDashboardPage() {
       alert('Gagal menghapus berita.');
     }
   };
+
 
   if (authChecking) {
     return (
@@ -659,7 +693,7 @@ export default function AdminDashboardPage() {
               </div>
 
               <button
-                onClick={() => setShowAddNewsModal(true)}
+                onClick={handleOpenAddNews}
                 className="bg-emerald-700 hover:bg-emerald-800 text-white font-bold text-xs px-5 py-2.5 rounded-xl shadow transition-colors flex items-center gap-2"
               >
                 <Plus className="w-4 h-4" />
@@ -719,6 +753,15 @@ export default function AdminDashboardPage() {
                           </td>
 
                           <td className="py-4 px-6 align-top text-right space-x-2">
+                            <button
+                              onClick={() => handleOpenEditNews(news)}
+                              className="inline-flex items-center gap-1 bg-amber-50 hover:bg-amber-100 text-amber-700 border border-amber-200 font-semibold px-3 py-1.5 rounded-xl transition-colors"
+                              title="Edit Berita"
+                            >
+                              <Edit3 className="w-3.5 h-3.5" />
+                              <span>Edit</span>
+                            </button>
+
                             <a
                               href={`/berita/${news.slug}`}
                               target="_blank"
@@ -745,6 +788,7 @@ export default function AdminDashboardPage() {
                 </div>
               )}
             </div>
+
           </div>
         )}
 
@@ -753,14 +797,20 @@ export default function AdminDashboardPage() {
 
       </main>
 
-      {/* --- ADD NEWS MODAL --- */}
+      {/* --- ADD / EDIT NEWS MODAL --- */}
       {showAddNewsModal && (
         <div className="fixed inset-0 z-50 bg-slate-900/60 backdrop-blur-sm flex items-center justify-center p-4">
           <MotionWrapper direction="up" className="bg-white rounded-3xl p-8 max-w-2xl w-full shadow-2xl relative max-h-[90vh] overflow-y-auto">
-            <h3 className="text-2xl font-bold text-slate-900 mb-1">Tulis Berita Baru</h3>
-            <p className="text-slate-500 text-xs mb-6">Publikasikan informasi resmi untuk warga Desa Siberobah.</p>
+            <h3 className="text-2xl font-bold text-slate-900 mb-1">
+              {editingNewsItem ? 'Edit Berita / Pengumuman' : 'Tulis Berita Baru'}
+            </h3>
+            <p className="text-slate-500 text-xs mb-6">
+              {editingNewsItem
+                ? 'Perbarui data berita atau pengumuman yang sudah dipublikasikan.'
+                : 'Publikasikan informasi resmi untuk warga Desa Siberobah.'}
+            </p>
 
-            <form onSubmit={handleCreateNews} className="space-y-4 text-xs">
+            <form onSubmit={handleSaveNews} className="space-y-4 text-xs">
               <div>
                 <label className="block font-semibold text-slate-700 mb-1">Judul Berita / Pengumuman</label>
                 <input
@@ -868,7 +918,10 @@ export default function AdminDashboardPage() {
               <div className="pt-4 flex gap-3">
                 <button
                   type="button"
-                  onClick={() => setShowAddNewsModal(false)}
+                  onClick={() => {
+                    setShowAddNewsModal(false);
+                    setEditingNewsItem(null);
+                  }}
                   disabled={submittingNews}
                   className="flex-1 py-3 bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold rounded-xl transition-colors disabled:opacity-50"
                 >
@@ -883,10 +936,10 @@ export default function AdminDashboardPage() {
                   {submittingNews ? (
                     <>
                       <RefreshCw className="w-4 h-4 animate-spin" />
-                      <span>Mempublikasikan...</span>
+                      <span>{editingNewsItem ? 'Menyimpan Perubahan...' : 'Mempublikasikan...'}</span>
                     </>
                   ) : (
-                    <span>Publikasikan Berita</span>
+                    <span>{editingNewsItem ? 'Simpan Perubahan' : 'Publikasikan Berita'}</span>
                   )}
                 </button>
               </div>
@@ -894,6 +947,7 @@ export default function AdminDashboardPage() {
           </MotionWrapper>
         </div>
       )}
+
 
     </div>
   );

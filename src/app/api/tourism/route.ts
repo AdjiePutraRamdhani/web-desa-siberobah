@@ -10,10 +10,25 @@ export async function GET(request: Request) {
   try {
     let items: TourismItem[] = [];
     if (prisma) {
-      items = await prisma.tourismUMKM.findMany({
+      const dbItems = await prisma.tourismUMKM.findMany({
         orderBy: { createdAt: 'desc' },
       });
+      if (dbItems && dbItems.length > 0) {
+        items = dbItems.map((item: any) => ({
+          id: item.id,
+          name: item.name,
+          type: item.type as 'Wisata' | 'UMKM',
+          category: item.category,
+          description: item.description,
+          location: item.location,
+          contact: item.contact || undefined,
+          priceRange: item.priceRange || undefined,
+          imageUrl: item.imageUrl || '/hero.jpg',
+          rating: item.rating,
+        }));
+      }
     }
+
 
     if (!items || items.length === 0) {
       items = INITIAL_WISATA_UMKM;

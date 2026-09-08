@@ -7,7 +7,7 @@ export async function GET(request: Request) {
   const status = searchParams.get('status');
 
   try {
-    let items = [];
+    let items: any[] = [];
     if (prisma) {
       items = await prisma.serviceSubmission.findMany({
         orderBy: { createdAt: 'desc' },
@@ -24,12 +24,13 @@ export async function GET(request: Request) {
 
     return NextResponse.json({ success: true, data: items });
   } catch (error) {
-    let items = getSubmissionsStore();
+    let items: any[] = getSubmissionsStore();
     if (status && status !== 'Semua') {
       items = items.filter((item: any) => item.status.toLowerCase() === status.toLowerCase());
     }
     return NextResponse.json({ success: true, data: items });
   }
+
 }
 
 export async function POST(request: Request) {

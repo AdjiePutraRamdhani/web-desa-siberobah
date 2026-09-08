@@ -9,10 +9,24 @@ export async function GET(request: Request) {
   try {
     let services: PublicServiceItem[] = [];
     if (prisma) {
-      services = await prisma.publicService.findMany({
+      const dbServices = await prisma.publicService.findMany({
         orderBy: { createdAt: 'desc' },
       });
+      if (dbServices && dbServices.length > 0) {
+        services = dbServices.map((s: any) => ({
+          id: s.id,
+          title: s.title,
+          category: s.category,
+          description: s.description,
+          requirements: typeof s.requirements === 'string' ? s.requirements.split('\n') : s.requirements,
+          processingTime: s.processingTime,
+          cost: s.cost,
+          icon: s.icon || 'description',
+          formUrl: s.formUrl || undefined,
+        }));
+      }
     }
+
 
     if (!services || services.length === 0) {
       services = INITIAL_SERVICES;
