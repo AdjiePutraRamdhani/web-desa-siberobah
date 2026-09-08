@@ -1,5 +1,5 @@
 import { PrismaClient } from '@prisma/client';
-import { PrismaMariaDb } from '@prisma/adapter-mariadb';
+import { PrismaPg } from '@prisma/adapter-pg';
 
 let prismaInstance: PrismaClient | null = null;
 
@@ -9,25 +9,11 @@ try {
   if (globalForPrisma.prisma) {
     prismaInstance = globalForPrisma.prisma;
   } else {
-    const rawUrl = process.env.DATABASE_URL || 'mysql://root:@localhost:3306/siberobah_db';
-    
-    // Parse DATABASE_URL: mysql://user:password@host:port/database
-    const parsed = new URL(rawUrl.replace('mysql://', 'http://'));
-    const host = parsed.hostname || 'localhost';
-    const port = parsed.port ? parseInt(parsed.port, 10) : 3306;
-    const user = parsed.username ? decodeURIComponent(parsed.username) : 'root';
-    const password = parsed.password ? decodeURIComponent(parsed.password) : '';
-    const database = parsed.pathname ? parsed.pathname.replace(/^\//, '') : 'siberobah_db';
+    const connectionString =
+      process.env.DATABASE_URL ||
+      'postgresql://postgres.berbhxwkmorbumxiczas:desasiberobah123@aws-0-ap-southeast-1.pooler.supabase.com:5432/postgres';
 
-    const adapter = new PrismaMariaDb({
-      host,
-      port,
-      user,
-      password,
-      database,
-      connectionLimit: 10,
-    });
-
+    const adapter = new PrismaPg({ connectionString });
     prismaInstance = new PrismaClient({ adapter });
 
     if (process.env.NODE_ENV !== 'production') {
@@ -35,7 +21,7 @@ try {
     }
   }
 } catch (e) {
-  console.error('Failed to initialize PrismaClient with MySQL adapter:', e);
+  console.error('Failed to initialize PrismaClient with PostgreSQL adapter:', e);
   prismaInstance = null;
 }
 

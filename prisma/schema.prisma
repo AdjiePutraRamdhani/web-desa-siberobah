@@ -1,12 +1,13 @@
-// Prisma schema for Desa Siberobah MySQL database
+// Prisma schema for Desa Siberobah Supabase (PostgreSQL) database
 
 generator client {
   provider = "prisma-client-js"
 }
 
 datasource db {
-  provider = "mysql"
+  provider = "postgresql"
 }
+
 
 model News {
   id        String   @id @default(uuid())
